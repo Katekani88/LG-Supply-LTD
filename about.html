@@ -14,30 +14,79 @@
     }
     * { box-sizing: border-box; }
     body { margin:0; font-family: 'Inter', 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height:1.6; }
+
+    /* Header */
     header { display:flex; align-items:center; justify-content:space-between; padding:20px 60px; background: linear-gradient(180deg, #0b0b0d, #0e0e12); border-bottom:1px solid #1f1f25; }
     header img { height:48px; }
-    nav a { margin-left:28px; color: var(--muted); text-decoration:none; font-weight:500; }
-    nav a:hover { color: var(--text); }
+
+    /* Desktop nav */
+    nav.desktop-nav { display: flex; align-items: center; }
+    nav.desktop-nav a { margin-left:28px; color: var(--muted); text-decoration:none; font-weight:500; }
+    nav.desktop-nav a:hover { color: var(--text); }
+
+    /* Hamburger menu */
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .hamburger span { display: block; height: 3px; width: 25px; background: var(--text); border-radius: 2px; }
+
+    /* Mobile nav */
+    nav.mobile-nav { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--panel); padding: 20px 0; border-top: 1px solid #1f1f25; }
+    nav.mobile-nav a { padding: 10px 20px; color: var(--text); text-decoration: none; font-weight: 500; }
+    nav.mobile-nav a:hover { background: #1f1f25; }
+
+    nav.mobile-nav.show { display: flex; }
+
+    /* Hero */
     .hero { padding:100px 60px; max-width:1200px; margin:auto; text-align:center; }
     .hero h1 { font-size:3rem; font-weight:700; margin-bottom:20px; }
     .hero p { color: var(--muted); font-size:1.1rem; max-width:700px; margin:auto; }
+
+    /* Sections */
     section { padding:80px 60px; max-width:1200px; margin:auto; }
     h2 { font-size:2rem; margin-bottom:30px; text-align:center; }
     .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px; }
     .card { background: var(--panel); border:1px solid #1f1f25; padding:30px; border-radius:10px; }
     .card h3 { margin-top:0; }
+
+    /* Footer */
     footer { padding:60px; background:#070709; border-top:1px solid #1f1f25; display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:40px; }
     footer h4 { margin-bottom:12px; }
     footer a { display:block; color: var(--muted); text-decoration:none; margin-bottom:8px; }
     footer a:hover { color: var(--text); }
     .copyright { grid-column:1/-1; color: var(--muted); font-size:0.9rem; margin-top:20px; text-align:center; }
+
+    /* Responsive */
+    @media (max-width:1024px) {
+      nav.desktop-nav { display: none; }
+      .hamburger { display: flex; }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="logo.png" alt="DemandCo Ltd Logo" />
-  <nav>
+  <img src="logo.png" alt="LG Supply Ltd Logo" />
+
+  <!-- Desktop nav -->
+  <nav class="desktop-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="tenders.html">Tenders</a>
+    <a href="suppliers.html">Suppliers</a>
+    <a href="compliance.html">Compliance</a>
+    <a href="market-insights.html">Market Insights</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Hamburger -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Mobile nav -->
+  <nav class="mobile-nav" id="mobile-nav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="tenders.html">Tenders</a>
@@ -81,7 +130,7 @@
 <section>
   <h2>UK-Tanzania Advantage</h2>
   <div class="card" style="max-width:900px; margin:auto;">
-    <p>DemandCo leverages UK advisory expertise for international sourcing standards while maintaining a strong local presence in Africa, ensuring compliance, quality, and market responsiveness for all procurement projects.</p>
+    <p>LG Supply Ltd leverages UK advisory expertise for international sourcing standards while maintaining a strong local presence in Africa, ensuring compliance, quality, and market responsiveness for all procurement projects.</p>
   </div>
 </section>
 
@@ -106,6 +155,14 @@
   </div>
   <div class="copyright">© 2026 LG Supply Ltd. All rights reserved.</div>
 </footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.toggle('show');
+  });
+</script>
 
 </body>
 </html>
