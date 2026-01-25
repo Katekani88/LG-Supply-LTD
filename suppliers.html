@@ -14,31 +14,79 @@
 }
 *{box-sizing:border-box;}
 body{margin:0;font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);}
+
+/* Header */
 header{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background: linear-gradient(180deg,#0b0b0d,#0e0e12);border-bottom:1px solid #1f1f25;}
 header img{height:48px;}
-nav a{margin-left:28px;color:var(--muted);text-decoration:none;font-weight:500;}
-nav a:hover{color:var(--text);}
+
+/* Desktop nav */
+nav.desktop-nav { display:flex; align-items:center; }
+nav.desktop-nav a{margin-left:28px;color:var(--muted);text-decoration:none;font-weight:500;}
+nav.desktop-nav a:hover{color:var(--text);}
+
+/* Hamburger menu */
+.hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
+.hamburger span { display:block; height:3px; width:25px; background:var(--text); border-radius:2px; }
+
+/* Mobile nav */
+nav.mobile-nav { display:none; flex-direction:column; position:absolute; top:80px; left:0; width:100%; background:var(--panel); padding:20px 0; border-top:1px solid #1f1f25; }
+nav.mobile-nav a{padding:10px 20px; color:var(--text); text-decoration:none; font-weight:500;}
+nav.mobile-nav a:hover{background:#1f1f25;}
+nav.mobile-nav.show { display:flex; }
+
+/* Hero */
 .hero{padding:100px 60px;text-align:center;}
 .hero h1{font-size:3rem;margin-bottom:20px;}
 .hero p{color:var(--muted);}
+
+/* Form */
 form{max-width:600px;margin:40px auto;background:var(--panel);padding:30px;border-radius:10px;border:1px solid #1f1f25;display:grid;gap:20px;}
 input, select, textarea{padding:12px;border-radius:6px;border:1px solid #2b2b33;background:#0b0b0d;color:var(--text);width:100%;}
 textarea{resize:vertical;}
 button{padding:12px 24px;border:none;border-radius:6px;background:var(--accent);color:#000;font-weight:600;cursor:pointer;}
 button:hover{opacity:0.9;}
+
+/* Footer */
 footer{padding:60px;background:#070709;border-top:1px solid #1f1f25;display:grid;grid-template-columns: repeat(auto-fit,minmax(200px,1fr));gap:40px;}
 footer h4{margin-bottom:12px;}
 footer a{display:block;color:var(--muted);text-decoration:none;margin-bottom:8px;}
 footer a:hover{color:var(--text);}
-.copyright{grid-column:1/-1;color:var(--muted);font-size:0.9rem;margin-top:20px;text-align:center;}
+copyright{grid-column:1/-1;color:var(--muted);font-size:0.9rem;margin-top:20px;text-align:center;}
 h2{color:var(--accent); text-align:center; margin-top:60px;}
+
+/* Responsive */
+@media (max-width:1024px){
+  nav.desktop-nav { display:none; }
+  .hamburger { display:flex; }
+}
 </style>
 </head>
 <body>
 
 <header>
-  <img src="logo.png" alt="DemandCo Ltd Logo" />
-  <nav>
+  <img src="logo.png" alt="LG Supply Ltd Logo" />
+
+  <!-- Desktop nav -->
+  <nav class="desktop-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="tenders.html">Tenders</a>
+    <a href="suppliers.html">Suppliers</a>
+    <a href="compliance.html">Compliance</a>
+    <a href="market-insights.html">Market Insights</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Hamburger -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Mobile nav -->
+  <nav class="mobile-nav" id="mobile-nav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="tenders.html">Tenders</a>
@@ -100,13 +148,17 @@ h2{color:var(--accent); text-align:center; margin-top:60px;}
 </footer>
 
 <script>
-  // ===============================
+  // Hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.toggle('show');
+  });
+
   // Supplier Registration
-  // ===============================
   const form = document.getElementById('supplierForm');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
@@ -130,9 +182,7 @@ h2{color:var(--accent); text-align:center; margin-top:60px;}
     }
   });
 
-  // ===============================
   // PayFast Premium Subscription
-  // ===============================
   const payButton = document.getElementById('payButton');
   payButton.addEventListener('click', () => {
     const email = document.getElementById('premiumEmail').value.trim();
@@ -159,7 +209,7 @@ h2{color:var(--accent); text-align:center; margin-top:60px;}
       email_address: email,
       amount: '100.00',
       item_name: 'Premium Supplier Subscription',
-      item_description: 'Monthly premium access to DemandCo tenders',
+      item_description: 'Monthly premium access to LG Supply Ltd tenders',
     };
 
     const form = document.createElement('form');
