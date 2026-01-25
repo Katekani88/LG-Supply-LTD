@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | LG Supply Ltd</title>
+<style>
+  :root {
+    --bg:#0b0b0d;
+    --panel:#121217;
+    --accent:#c9a24d;
+    --text:#eaeaea;
+    --muted:#9a9a9a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);}
+  header{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background: linear-gradient(180deg,#0b0b0d,#0e0e12);border-bottom:1px solid #1f1f25;}
+  header img{height:48px;}
+  nav a{margin-left:28px;color:var(--muted);text-decoration:none;font-weight:500;}
+  nav a:hover{color:var(--text);}
+  .hero{padding:100px 60px;text-align:center;}
+  .hero h1{font-size:3rem;margin-bottom:20px;}
+  .hero p{color:var(--muted);}
+  form{max-width:600px;margin:40px auto;background:var(--panel);padding:30px;border-radius:10px;border:1px solid #1f1f25;display:grid;gap:20px;}
+  input, textarea{padding:12px;border-radius:6px;border:1px solid #2b2b33;background:#0b0b0d;color:var(--text);width:100%;}
+  textarea{resize:vertical;}
+  button{padding:12px 24px;border:none;border-radius:6px;background:var(--accent);color:#000;font-weight:600;cursor:pointer;}
+  button:hover{opacity:0.9;}
+  footer{padding:60px;background:#070709;border-top:1px solid #1f1f25;display:grid;grid-template-columns: repeat(auto-fit,minmax(200px,1fr));gap:40px;}
+  footer h4{margin-bottom:12px;}
+  footer a{display:block;color:var(--muted);text-decoration:none;margin-bottom:8px;}
+  footer a:hover{color:var(--text);}
+  .copyright{grid-column:1/-1;color:var(--muted);font-size:0.9rem;margin-top:20px;text-align:center;}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="DemandCo Ltd Logo" />
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="tenders.html">Tenders</a>
+    <a href="suppliers.html">Suppliers</a>
+    <a href="compliance.html">Compliance</a>
+    <a href="market-insights.html">Market Insights</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Contact Us</h1>
+  <p>Get in touch with LG Supply Ltd for inquiries, partnerships, or supplier support.</p>
+</div>
+
+<form id="contactForm">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Email Address" required>
+  <input type="tel" name="phone" placeholder="Phone Number">
+  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+
+<footer>
+  <div>
+    <h4>LG Supply Ltd</h4>
+    <a href="about.html">About Us</a>
+    <a href="careers.html">Careers</a>
+    <a href="news.html">News</a>
+  </div>
+  <div>
+    <h4>Suppliers</h4>
+    <a href="suppliers.html">Register</a>
+    <a href="membership.html">Membership</a>
+    <a href="compliance.html">Compliance</a>
+  </div>
+  <div>
+    <h4>Legal</h4>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="anti-corruption.html">Anti-Corruption Policy</a>
+  </div>
+  <div class="copyright">© 2026 LG Supply Ltd. All rights reserved.</div>
+</footer>
+
+<script>
+  const contactForm = document.getElementById('contactForm');
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+      alert(result.message);
+      if (result.success) contactForm.reset();
+    } catch (err) {
+      console.error(err);
+      alert('Server error, try again later.');
+    }
+  });
+</script>
+
+</body>
+</html>

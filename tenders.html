@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tenders | LG Supply Ltd</title>
+<style>
+  :root {
+    --bg:#0b0b0d;
+    --panel:#121217;
+    --accent:#c9a24d;
+    --text:#eaeaea;
+    --muted:#9a9a9a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);}
+  header{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background: linear-gradient(180deg,#0b0b0d,#0e0e12);border-bottom:1px solid #1f1f25;}
+  header img{height:48px;}
+  nav a{margin-left:28px;color:var(--muted);text-decoration:none;font-weight:500;}
+  nav a:hover{color:var(--text);}
+  .hero{padding:100px 60px;text-align:center;}
+  .hero h1{font-size:3rem;margin-bottom:20px;}
+  .hero p{color:var(--muted);}
+  #tenderList{max-width:1200px;margin:40px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+  .tender-card{background:var(--panel);padding:20px;border-radius:10px;border:1px solid #1f1f25;}
+  .tender-card h3{margin-top:0;}
+  .tender-card p{color:var(--muted);}
+  footer{padding:60px;background:#070709;border-top:1px solid #1f1f25;display:grid;grid-template-columns: repeat(auto-fit,minmax(200px,1fr));gap:40px;}
+  footer h4{margin-bottom:12px;}
+  footer a{display:block;color:var(--muted);text-decoration:none;margin-bottom:8px;}
+  footer a:hover{color:var(--text);}
+  .copyright{grid-column:1/-1;color:var(--muted);font-size:0.9rem;margin-top:20px;text-align:center;}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="DemandCo Ltd Logo" />
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="tenders.html">Tenders</a>
+    <a href="suppliers.html">Suppliers</a>
+    <a href="compliance.html">Compliance</a>
+    <a href="market-insights.html">Market Insights</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Open Tenders</h1>
+  <p>Explore the latest tenders issued by LG Supply Ltd.</p>
+</div>
+
+<div id="tenderList">
+  <!-- Tender cards will appear here dynamically -->
+</div>
+
+<footer>
+  <div>
+    <h4>DemandCo Ltd</h4>
+    <a href="about.html">About Us</a>
+    <a href="careers.html">Careers</a>
+    <a href="news.html">News</a>
+  </div>
+  <div>
+    <h4>Suppliers</h4>
+    <a href="suppliers.html">Register</a>
+    <a href="membership.html">Membership</a>
+    <a href="compliance.html">Compliance</a>
+  </div>
+  <div>
+    <h4>Legal</h4>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="anti-corruption.html">Anti-Corruption Policy</a>
+  </div>
+  <div class="copyright">© 2026 LG Supply Ltd. All rights reserved.</div>
+</footer>
+
+<script>
+async function loadTenders() {
+  try {
+    const res = await fetch('http://localhost:5000/api/tenders');
+    const result = await res.json();
+
+    if (!result.success) {
+      document.getElementById('tenderList').innerHTML = '<p>Failed to load tenders.</p>';
+      return;
+    }
+
+    const container = document.getElementById('tenderList');
+    container.innerHTML = result.tenders.map(t => `
+      <div class="tender-card">
+        <h3>${t.title}</h3>
+        <p>${t.description}</p>
+        <p><strong>Closing Date:</strong> ${new Date(t.closing_date).toLocaleDateString()}</p>
+        <p><strong>Status:</strong> ${t.status}</p>
+      </div>
+    `).join('');
+
+  } catch (err) {
+    console.error(err);
+    document.getElementById('tenderList').innerHTML = '<p>Error loading tenders.</p>';
+  }
+}
+
+loadTenders();
+</script>
+
+</body>
+</html>
