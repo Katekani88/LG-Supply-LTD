@@ -69,16 +69,24 @@ header img{height:48px;}
 
 /* HERO */
 .hero{
-  padding:120px 60px;
-  max-width:1200px;
+  padding:80px 60px;
+  max-width:1000px;
   margin:auto;
+  text-align:center;
 }
-.hero h1{font-size:3.2rem;}
-.hero p{color:var(--muted);max-width:700px;}
+.hero img{
+  width:100%;
+  max-height:300px;
+  object-fit:cover;
+  border-radius:8px;
+  margin-bottom:30px;
+}
+.hero h1{font-size:2.8rem; margin-bottom:20px;}
+.hero p{color:var(--muted);max-width:700px;margin:auto;margin-bottom:30px;}
 .cta a{
   display:inline-block;
   padding:14px 28px;
-  margin-right:16px;
+  margin:8px;
   border-radius:6px;
   font-weight:600;
   text-decoration:none;
@@ -92,6 +100,13 @@ section{
   max-width:1200px;
   margin:auto;
 }
+section h2{
+  font-size:2.2rem;
+  margin-bottom:20px;
+  border-left:4px solid var(--accent);
+  padding-left:12px;
+}
+section p{color:var(--muted);margin-bottom:40px;}
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -102,6 +117,14 @@ section{
   border:1px solid #1f1f25;
   padding:30px;
   border-radius:10px;
+  text-align:center;
+}
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:8px;
+  margin-bottom:15px;
 }
 
 /* FOOTER */
@@ -157,14 +180,72 @@ footer a:hover{color:var(--text);}
   <a href="contact.html">Contact</a>
 </div>
 
+<!-- HERO -->
 <div class="hero">
-  <h1>Enterprise Procurement & Tender Aggregation</h1>
-  <p>LG Supply Ltd operates as a buyer-led procurement authority across Africa.</p>
+  <img src="https://images.pexels.com/photos/3862135/pexels-photo-3862135.jpeg" alt="Supply Chain Logistics Overview">
+  <h1>Centralized Procurement & Tender Authority Across Africa</h1>
+  <p>LG Supply Ltd represents aggregated institutional demand across infrastructure, utilities, and public sector supply chains. We reduce risk, streamline procurement, and ensure compliance.</p>
   <div class="cta">
     <a href="tenders.html" class="primary">View Live Tenders</a>
-    <a href="suppliers.html" class="secondary">Supplier Registration</a>
+    <a href="suppliers.html" class="secondary">Register as Supplier</a>
   </div>
 </div>
+
+<!-- PROBLEM‑SOLUTION -->
+<section>
+  <h2>Why LG Supply?</h2>
+  <p>Fragmented procurement, supplier inefficiencies, compliance risk, and inflated costs challenge institutional supply chains. LG Supply provides governance, scale, and neutral aggregation to stabilize procurement processes.</p>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg" alt="Fragmented Procurement">
+      <h3>Fragmented Procurement</h3>
+      <p>We unify procurement to simplify and streamline sourcing across institutions.</p>
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg" alt="Supplier Inefficiency">
+      <h3>Supplier Inefficiencies</h3>
+      <p>Our platform ensures fair access and accountability across suppliers.</p>
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg" alt="Compliance Risk">
+      <h3>Compliance Risk</h3>
+      <p>Processes are designed to align with public‑sector frameworks and reduce risk.</p>
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/3184290/pexels-photo-3184290.jpeg" alt="Cost Optimization">
+      <h3>Inflated Costs</h3>
+      <p>Aggregated demand and transparent tenders optimize costs for institutions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section>
+  <h2>Sectors We Serve</h2>
+  <p>We provide procurement services across key sectors, ensuring structured and compliant processes for all stakeholders.</p>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.pexels.com/photos/209231/pexels-photo-209231.jpeg" alt="Agriculture Sector">
+      <h3>Agriculture</h3>
+      <p>Streamlined sourcing for agricultural equipment, inputs, and infrastructure.</p>
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/12274804/pexels-photo-12274804.jpeg" alt="Mining Sector">
+      <h3>Mining</h3>
+      <p>Centralized tendering and supply for mining operations and heavy equipment.</p>
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/3758962/pexels-photo-3758962.jpeg" alt="Energy Sector">
+      <h3>Energy</h3>
+      <p>Efficient procurement for energy projects and utilities.</p>
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg" alt="Construction Sector">
+      <h3>Construction</h3>
+      <p>Compliance‑aligned tendering for construction and infrastructure projects.</p>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div>
