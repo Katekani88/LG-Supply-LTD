@@ -21,6 +21,8 @@ body{
   color:var(--text);
   line-height:1.6;
 }
+
+/* HEADER */
 header{
   display:flex;
   align-items:center;
@@ -30,6 +32,11 @@ header{
   border-bottom:1px solid #1f1f25;
 }
 header img{height:48px;}
+
+nav{
+  display:flex;
+  align-items:center;
+}
 nav a{
   margin-left:28px;
   color:var(--muted);
@@ -38,6 +45,36 @@ nav a{
 }
 nav a:hover{color:var(--text);}
 
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+}
+.hamburger span{
+  width:26px;
+  height:3px;
+  background:var(--text);
+  margin:4px 0;
+  transition:0.3s;
+}
+
+/* MOBILE MENU */
+.mobile-nav{
+  display:none;
+  flex-direction:column;
+  background:#0e0e12;
+  border-bottom:1px solid #1f1f25;
+}
+.mobile-nav a{
+  padding:16px 24px;
+  border-top:1px solid #1f1f25;
+  color:var(--muted);
+  text-decoration:none;
+}
+.mobile-nav a:hover{color:var(--text);}
+
+/* HERO */
 .hero{
   padding:100px 60px;
   text-align:center;
@@ -54,12 +91,12 @@ nav a:hover{color:var(--text);}
   margin:auto;
 }
 
+/* CASE STUDIES */
 section{
   max-width:1200px;
   margin:auto;
   padding:60px;
 }
-
 .case-study{
   background:var(--panel);
   border:1px solid #1f1f25;
@@ -74,10 +111,10 @@ section{
 .meta{
   display:flex;
   flex-wrap:wrap;
-  gap:20px;
+  gap:16px;
   margin-bottom:20px;
-  font-size:0.95rem;
   color:var(--muted);
+  font-size:0.95rem;
 }
 .meta span{
   background:#0b0b0d;
@@ -85,14 +122,9 @@ section{
   border-radius:20px;
   border:1px solid #1f1f25;
 }
+.case-study p{color:var(--muted);}
 
-.case-study h3{
-  margin-top:30px;
-}
-.case-study p{
-  color:var(--muted);
-}
-
+/* FOOTER */
 footer{
   padding:60px;
   background:#070709;
@@ -116,13 +148,33 @@ footer a:hover{color:var(--text);}
   text-align:center;
   margin-top:20px;
 }
+
+/* RESPONSIVE */
+@media (max-width: 900px){
+  header{
+    padding:20px 24px;
+  }
+  nav{
+    display:none;
+  }
+  .hamburger{
+    display:flex;
+  }
+  section{
+    padding:40px 24px;
+  }
+  .hero{
+    padding:80px 24px;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-  <img src="logo.png" alt="LG Supply Ltd Logo" />
+  <img src="logo.png" alt="LG Supply Ltd Logo">
+
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -133,111 +185,72 @@ footer a:hover{color:var(--text);}
     <a href="projects.html">Projects</a>
     <a href="contact.html">Contact</a>
   </nav>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="tenders.html">Tenders</a>
+  <a href="suppliers.html">Suppliers</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="market-insights.html">Market Insights</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
+</div>
 
 <div class="hero">
   <h1>Projects & Case Studies</h1>
   <p>
     A selection of infrastructure, environmental, and engineering projects
-    successfully supported and delivered by LG Supply Ltd across Southern Africa.
+    successfully delivered by LG Supply Ltd.
   </p>
 </div>
 
 <section>
 
-  <!-- CASE STUDY 1 -->
   <div class="case-study">
     <h2>Lesotho Lowlands Water Development Project – Phase II</h2>
-
     <div class="meta">
-      <span>Sector: Water Infrastructure</span>
-      <span>Region: Southern Africa</span>
-      <span>Project Type: Bulk Water Supply Systems</span>
+      <span>Water Infrastructure</span>
+      <span>Southern Africa</span>
+      <span>Bulk Water Supply</span>
     </div>
-
-    <h3>Project Overview</h3>
     <p>
-      LG Supply Ltd supported a large-scale national water infrastructure programme
-      aimed at improving domestic, industrial, and institutional water supply in
-      rapidly growing urban and peri-urban areas.
-    </p>
-
-    <h3>Scope of Work</h3>
-    <p>
-      The project involved technical review of engineering designs, support for
-      design-and-build procurement processes, preparation of tender documentation,
-      and construction supervision of intake works, treatment facilities,
-      transmission pipelines, and distribution networks.
-    </p>
-
-    <h3>Key Outcomes</h3>
-    <p>
-      The assignment contributed to improved water supply reliability, strengthened
-      project governance, and ensured compliance with international engineering
-      standards while supporting long-term operational sustainability.
+      LG Supply Ltd supported a national water infrastructure programme
+      delivering intake works, treatment facilities, pipelines, and
+      distribution systems to expanding urban centres.
     </p>
   </div>
 
-  <!-- CASE STUDY 2 -->
   <div class="case-study">
-    <h2>Environmental Flow Assessment & Water Quality Modelling</h2>
-
+    <h2>Environmental Flow & Water Quality Assessment</h2>
     <div class="meta">
-      <span>Sector: Environmental & Water Resources</span>
-      <span>Region: Southern Africa</span>
-      <span>Project Type: Environmental Assessment</span>
+      <span>Environmental Services</span>
+      <span>Water Resources</span>
+      <span>Impact Assessment</span>
     </div>
-
-    <h3>Project Overview</h3>
     <p>
-      LG Supply Ltd delivered specialist environmental and hydrological services to
-      support a strategic water abstraction and augmentation initiative while
-      safeguarding river ecosystems.
-    </p>
-
-    <h3>Scope of Work</h3>
-    <p>
-      Services included environmental flow assessments, hydrological and hydraulic
-      analysis, aquatic biodiversity studies, water quality modelling, and the
-      development of sustainable flow management frameworks.
-    </p>
-
-    <h3>Key Outcomes</h3>
-    <p>
-      The project established clear environmental flow requirements, strengthened
-      environmental compliance, and provided practical operational guidelines
-      balancing infrastructure needs with ecosystem protection.
+      The project focused on environmental flow modelling, water quality
+      analysis, and sustainable abstraction planning to protect river systems.
     </p>
   </div>
 
-  <!-- CASE STUDY 3 -->
   <div class="case-study">
-    <h2>Multi-Phase Water Infrastructure Planning & Supervision</h2>
-
+    <h2>Multi-Phase Water Infrastructure Planning</h2>
     <div class="meta">
-      <span>Sector: Infrastructure Development</span>
-      <span>Region: Southern Africa</span>
-      <span>Project Type: Planning & Supervision</span>
+      <span>Infrastructure</span>
+      <span>Planning & Supervision</span>
     </div>
-
-    <h3>Project Overview</h3>
     <p>
-      LG Supply Ltd supported a multi-phase water infrastructure development program
-      designed to expand and modernize regional water supply systems serving growing
-      urban centers.
-    </p>
-
-    <h3>Scope of Work</h3>
-    <p>
-      The scope covered design reviews, tender preparation, procurement support,
-      contractor evaluation, and construction supervision across treatment plants,
-      reservoirs, pumping stations, and distribution networks.
-    </p>
-
-    <h3>Key Outcomes</h3>
-    <p>
-      The project achieved improved delivery coordination, enhanced construction
-      quality, and increased system capacity and resilience.
+      LG Supply Ltd provided procurement support, tender documentation,
+      contractor evaluation, and construction supervision for regional
+      water systems.
     </p>
   </div>
 
@@ -266,6 +279,13 @@ footer a:hover{color:var(--text);}
     © 2026 LG Supply Ltd. All rights reserved.
   </div>
 </footer>
+
+<script>
+function toggleMenu(){
+  const menu = document.getElementById('mobileNav');
+  menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+}
+</script>
 
 </body>
 </html>
