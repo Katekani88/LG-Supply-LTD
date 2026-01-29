@@ -4,59 +4,67 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tenders | LG Supply Ltd</title>
+<link rel="icon" type="image/png" href="logo.png">
 <style>
-  :root {
-    --bg:#0b0b0d;
-    --panel:#121217;
-    --accent:#c9a24d;
-    --text:#eaeaea;
-    --muted:#9a9a9a;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);}
-  
-  /* Header */
-  header{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background: linear-gradient(180deg,#0b0b0d,#0e0e12);border-bottom:1px solid #1f1f25;}
-  header img{height:48px;}
+:root {
+  --bg:#0b0b0d;
+  --panel:#121217;
+  --accent:#c9a24d;
+  --text:#eaeaea;
+  --muted:#9a9a9a;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
 
-  /* Desktop nav */
-  nav.desktop-nav { display:flex; align-items:center; }
-  nav.desktop-nav a{margin-left:28px;color:var(--muted);text-decoration:none;font-weight:500;}
-  nav.desktop-nav a:hover{color:var(--text);}
+/* HEADER */
+header{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background: linear-gradient(180deg,#0b0b0d,#0e0e12);border-bottom:1px solid #1f1f25;position:relative;}
+header img{height:48px;}
+.desktop-nav a{margin-left:28px;color:var(--muted);text-decoration:none;font-weight:500;}
+.desktop-nav a:hover{color:var(--text);}
+.hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;}
+.hamburger span{width:25px;height:3px;background:var(--text);border-radius:2px;}
+.mobile-nav{display:none;flex-direction:column;position:absolute;top:80px;left:0;width:100%;background:var(--panel);padding:20px 0;border-top:1px solid #1f1f25;}
+.mobile-nav a{padding:10px 20px;color:var(--text);text-decoration:none;font-weight:500;}
+.mobile-nav a:hover{background:#1f1f25;}
+.mobile-nav.show{display:flex;}
 
-  /* Hamburger menu */
-  .hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
-  .hamburger span { display:block; height:3px; width:25px; background:var(--text); border-radius:2px; }
+/* HERO */
+.hero{
+  padding:120px 60px;
+  text-align:center;
+  color:#eaeaea;
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+    url('https://cloudfront-us-east-1.images.arcpublishing.com/adn/6BQOV7F6Z5HD5O75DZH52Q43FI.jpg');
+  background-size:cover;
+  background-position:center;
+}
+.hero h1{font-size:3rem;margin-bottom:20px;}
+.hero p{color:var(--muted);max-width:700px;margin:auto;font-size:1.2rem;}
 
-  /* Mobile nav */
-  nav.mobile-nav { display:none; flex-direction:column; position:absolute; top:80px; left:0; width:100%; background:var(--panel); padding:20px 0; border-top:1px solid #1f1f25; }
-  nav.mobile-nav a{padding:10px 20px; color:var(--text); text-decoration:none; font-weight:500;}
-  nav.mobile-nav a:hover{background:#1f1f25;}
-  nav.mobile-nav.show { display:flex; }
+/* Sector Filter */
+#filterBar{max-width:1200px;margin:20px auto;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.filter-btn{padding:10px 20px;border-radius:6px;border:1px solid var(--muted);background:transparent;color:var(--text);cursor:pointer;font-weight:500;transition:0.2s;}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);color:#000;border-color:var(--accent);}
 
-  /* Hero */
-  .hero{padding:100px 60px;text-align:center;}
-  .hero h1{font-size:3rem;margin-bottom:20px;}
-  .hero p{color:var(--muted);}
+/* Tender list */
+#tenderList{max-width:1200px;margin:20px auto 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+.tender-card{background:var(--panel);padding:20px;border-radius:10px;border:1px solid #1f1f25;}
+.tender-card h3{margin-top:0;}
+.tender-card p{color:var(--muted);}
 
-  /* Tender list */
-  #tenderList{max-width:1200px;margin:40px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
-  .tender-card{background:var(--panel);padding:20px;border-radius:10px;border:1px solid #1f1f25;}
-  .tender-card h3{margin-top:0;}
-  .tender-card p{color:var(--muted);}
+/* Footer */
+footer{padding:60px;background:#070709;border-top:1px solid #1f1f25;display:grid;grid-template-columns: repeat(auto-fit,minmax(200px,1fr));gap:40px;}
+footer h4{margin-bottom:12px;}
+footer a{display:block;color:var(--muted);text-decoration:none;margin-bottom:8px;}
+footer a:hover{color:var(--text);}
+.copyright{grid-column:1/-1;color:var(--muted);font-size:0.9rem;margin-top:20px;text-align:center;}
 
-  /* Footer */
-  footer{padding:60px;background:#070709;border-top:1px solid #1f1f25;display:grid;grid-template-columns: repeat(auto-fit,minmax(200px,1fr));gap:40px;}
-  footer h4{margin-bottom:12px;}
-  footer a{display:block;color:var(--muted);text-decoration:none;margin-bottom:8px;}
-  footer a:hover{color:var(--text);}
-  .copyright{grid-column:1/-1;color:var(--muted);font-size:0.9rem;margin-top:20px;text-align:center;}
-
-  /* Responsive */
-  @media (max-width:1024px){
-    nav.desktop-nav { display:none; }
-    .hamburger { display:flex; }
-  }
+/* Responsive */
+@media(max-width:1024px){
+  .desktop-nav{display:none;}
+  .hamburger{display:flex;}
+}
 </style>
 </head>
 <body>
@@ -78,9 +86,7 @@
 
   <!-- Hamburger -->
   <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </div>
 
   <!-- Mobile nav -->
@@ -98,11 +104,20 @@
 
 <div class="hero">
   <h1>Open Tenders</h1>
-  <p>Explore the latest tenders issued by LG Supply Ltd.</p>
+  <p>Explore the latest tenders issued by LG Supply Ltd for various sectors across Africa.</p>
+</div>
+
+<!-- Sector Filter -->
+<div id="filterBar">
+  <button class="filter-btn active" data-sector="all">All</button>
+  <button class="filter-btn" data-sector="Construction">Construction</button>
+  <button class="filter-btn" data-sector="Mining">Mining</button>
+  <button class="filter-btn" data-sector="Energy">Energy</button>
+  <button class="filter-btn" data-sector="Agriculture">Agriculture</button>
 </div>
 
 <div id="tenderList">
-  <!-- Tender cards will appear here dynamically -->
+  <!-- Tender cards will be loaded dynamically -->
 </div>
 
 <footer>
@@ -128,41 +143,44 @@
 </footer>
 
 <script>
-  // Hamburger toggle
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobile-nav');
-  hamburger.addEventListener('click', () => {
-    mobileNav.classList.toggle('show');
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+hamburger.addEventListener('click', () => {
+  mobileNav.classList.toggle('show');
+});
+
+// Tender data with sector
+const tenders = [
+  {title:"Construction Equipment Supply", description:"Supply of heavy machinery for major construction projects.", closing_date:"2026-03-15", status:"Open", sector:"Construction"},
+  {title:"Renewable Energy Materials", description:"Procurement of solar panels, wind turbines, and related materials.", closing_date:"2026-03-30", status:"Open", sector:"Energy"},
+  {title:"Mining Equipment Tender", description:"Supply and maintenance of mining equipment across multiple sites.", closing_date:"2026-04-05", status:"Open", sector:"Mining"},
+  {title:"Agricultural Machinery Supply", description:"Supply of tractors and harvesters for regional farms.", closing_date:"2026-04-12", status:"Open", sector:"Agriculture"}
+];
+
+function loadTenders(filterSector = "all") {
+  const container = document.getElementById('tenderList');
+  const filtered = filterSector === "all" ? tenders : tenders.filter(t => t.sector === filterSector);
+  container.innerHTML = filtered.map(t => `
+    <div class="tender-card">
+      <h3>${t.title}</h3>
+      <p>${t.description}</p>
+      <p><strong>Sector:</strong> ${t.sector}</p>
+      <p><strong>Closing Date:</strong> ${new Date(t.closing_date).toLocaleDateString()}</p>
+      <p><strong>Status:</strong> ${t.status}</p>
+    </div>
+  `).join('');
+}
+
+loadTenders();
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    loadTenders(btn.getAttribute('data-sector'));
   });
-
-  // Load tenders dynamically
-  async function loadTenders() {
-    try {
-      const res = await fetch('http://localhost:5000/api/tenders');
-      const result = await res.json();
-
-      if (!result.success) {
-        document.getElementById('tenderList').innerHTML = '<p>Failed to load tenders.</p>';
-        return;
-      }
-
-      const container = document.getElementById('tenderList');
-      container.innerHTML = result.tenders.map(t => `
-        <div class="tender-card">
-          <h3>${t.title}</h3>
-          <p>${t.description}</p>
-          <p><strong>Closing Date:</strong> ${new Date(t.closing_date).toLocaleDateString()}</p>
-          <p><strong>Status:</strong> ${t.status}</p>
-        </div>
-      `).join('');
-
-    } catch (err) {
-      console.error(err);
-      document.getElementById('tenderList').innerHTML = '<p>Error loading tenders.</p>';
-    }
-  }
-
-  loadTenders();
+});
 </script>
 
 </body>
