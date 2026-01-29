@@ -4,60 +4,182 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | LG Supply Ltd</title>
+<link rel="icon" href="logo.png" type="image/png">
 <style>
-  :root {
-    --bg:#0b0b0d;
-    --panel:#121217;
-    --accent:#c9a24d;
-    --text:#eaeaea;
-    --muted:#9a9a9a;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);}
+:root {
+  --bg:#0b0b0d;
+  --panel:#121217;
+  --accent:#c9a24d;
+  --text:#eaeaea;
+  --muted:#9a9a9a;
+}
 
-  /* Header */
-  header{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background: linear-gradient(180deg,#0b0b0d,#0e0e12);border-bottom:1px solid #1f1f25;}
-  header img{height:48px;}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Inter','Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
 
-  /* Desktop nav */
-  nav.desktop-nav { display:flex; align-items:center; }
-  nav.desktop-nav a{margin-left:28px;color:var(--muted);text-decoration:none;font-weight:500;}
-  nav.desktop-nav a:hover{color:var(--text);}
+/* HEADER */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 60px;
+  background: linear-gradient(180deg,#0b0b0d,#0e0e12);
+  border-bottom:1px solid #1f1f25;
+}
+header img{height:48px;}
 
-  /* Hamburger */
-  .hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
-  .hamburger span { display:block; height:3px; width:25px; background:var(--text); border-radius:2px; }
+nav.desktop-nav {
+  display:flex;
+  align-items:center;
+}
+nav.desktop-nav a{
+  margin-left:28px;
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:500;
+}
+nav.desktop-nav a:hover{color:var(--text);}
 
-  /* Mobile nav */
-  nav.mobile-nav { display:none; flex-direction:column; position:absolute; top:80px; left:0; width:100%; background:var(--panel); padding:20px 0; border-top:1px solid #1f1f25; }
-  nav.mobile-nav a{padding:10px 20px; color:var(--text); text-decoration:none; font-weight:500;}
-  nav.mobile-nav a:hover{background:#1f1f25;}
-  nav.mobile-nav.show { display:flex; }
+/* HAMBURGER */
+.hamburger {
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+  gap:5px;
+}
+.hamburger span {
+  display:block;
+  height:3px;
+  width:25px;
+  background:var(--text);
+  border-radius:2px;
+}
 
-  /* Hero */
-  .hero{padding:100px 60px;text-align:center;}
-  .hero h1{font-size:3rem;margin-bottom:20px;}
-  .hero p{color:var(--muted);}
+/* MOBILE nav */
+nav.mobile-nav {
+  display:none;
+  flex-direction:column;
+  position:absolute;
+  top:80px;
+  left:0;
+  width:100%;
+  background:var(--panel);
+  padding:20px 0;
+  border-top:1px solid #1f1f25;
+}
+nav.mobile-nav a{
+  padding:10px 20px;
+  color:var(--text);
+  text-decoration:none;
+  font-weight:500;
+}
+nav.mobile-nav a:hover{background:#1f1f25;}
+nav.mobile-nav.show { display:flex; }
 
-  /* Form */
-  form{max-width:600px;margin:40px auto;background:var(--panel);padding:30px;border-radius:10px;border:1px solid #1f1f25;display:grid;gap:20px;}
-  input, textarea{padding:12px;border-radius:6px;border:1px solid #2b2b33;background:#0b0b0d;color:var(--text);width:100%;}
-  textarea{resize:vertical;}
-  button{padding:12px 24px;border:none;border-radius:6px;background:var(--accent);color:#000;font-weight:600;cursor:pointer;}
-  button:hover{opacity:0.9;}
+/* HERO */
+.hero {
+  position: relative;
+  width: 100%;
+  padding:120px 60px;
+  text-align:center;
+  color:#fff;
+  overflow:hidden;
+}
+.hero::before {
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:120%;
+  height:120%;
+  background: url('logo.png') center/contain no-repeat;
+  opacity:0.08;
+  transform: translate(-50%, -50%);
+  z-index:0;
+  transition: transform 0.2s ease-out;
+}
+.hero h1{
+  position: relative;
+  z-index:2;
+  font-size:3rem;
+  margin-bottom:20px;
+  text-shadow:1px 1px 5px rgba(0,0,0,0.7);
+}
+.hero p{
+  position: relative;
+  z-index:2;
+  max-width:700px;
+  margin:auto;
+  text-shadow:1px 1px 5px rgba(0,0,0,0.5);
+}
 
-  /* Footer */
-  footer{padding:60px;background:#070709;border-top:1px solid #1f1f25;display:grid;grid-template-columns: repeat(auto-fit,minmax(200px,1fr));gap:40px;}
-  footer h4{margin-bottom:12px;}
-  footer a{display:block;color:var(--muted);text-decoration:none;margin-bottom:8px;}
-  footer a:hover{color:var(--text);}
-  .copyright{grid-column:1/-1;color:var(--muted);font-size:0.9rem;margin-top:20px;text-align:center;}
+/* FORM */
+form{
+  max-width:600px;
+  margin:40px auto;
+  background:var(--panel);
+  padding:30px;
+  border-radius:10px;
+  border:1px solid #1f1f25;
+  display:grid;
+  gap:20px;
+}
+input, textarea{
+  padding:12px;
+  border-radius:6px;
+  border:1px solid #2b2b33;
+  background:#0b0b0d;
+  color:var(--text);
+  width:100%;
+}
+textarea{resize:vertical;}
+button{
+  padding:12px 24px;
+  border:none;
+  border-radius:6px;
+  background:var(--accent);
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+}
+button:hover{opacity:0.9;}
 
-  /* Responsive */
-  @media (max-width:1024px){
-    nav.desktop-nav { display:none; }
-    .hamburger { display:flex; }
-  }
+/* FOOTER */
+footer{
+  padding:60px;
+  background:#070709;
+  border-top:1px solid #1f1f25;
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap:40px;
+}
+footer h4{margin-bottom:12px;}
+footer a{
+  display:block;
+  color:var(--muted);
+  text-decoration:none;
+  margin-bottom:8px;
+}
+footer a:hover{color:var(--text);}
+.copyright{
+  grid-column:1/-1;
+  color:var(--muted);
+  font-size:0.9rem;
+  margin-top:20px;
+  text-align:center;
+}
+
+/* RESPONSIVE */
+@media (max-width:1024px){
+  nav.desktop-nav { display:none; }
+  .hamburger { display:flex; }
+  .hero{padding:80px 24px;}
+}
 </style>
 </head>
 <body>
@@ -158,6 +280,14 @@
       console.error(err);
       alert('Server error, try again later.');
     }
+  });
+
+  // Parallax hero effect
+  const hero = document.querySelector('.hero');
+  window.addEventListener('scroll', () => {
+    const scroll = window.scrollY;
+    hero.style.setProperty('--bg-move', `${scroll * 0.2}px`);
+    hero.style.backgroundPosition = `center calc(50% + ${scroll * 0.2}px)`;
   });
 </script>
 
