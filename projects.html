@@ -3,88 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects | LG Supply Ltd</title>
+<title>Projects & Case Studies | LG Supply Ltd</title>
+
 <style>
-  :root {
-    --bg:#0b0b0d;
-    --panel:#121217;
-    --accent:#c9a24d;
-    --text:#eaeaea;
-    --muted:#9a9a9a;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);}
+:root {
+  --bg:#0b0b0d;
+  --panel:#121217;
+  --accent:#c9a24d;
+  --text:#eaeaea;
+  --muted:#9a9a9a;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Inter','Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 60px;
+  background: linear-gradient(180deg,#0b0b0d,#0e0e12);
+  border-bottom:1px solid #1f1f25;
+}
+header img{height:48px;}
+nav a{
+  margin-left:28px;
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:500;
+}
+nav a:hover{color:var(--text);}
 
-  /* Header */
-  header{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background: linear-gradient(180deg,#0b0b0d,#0e0e12);border-bottom:1px solid #1f1f25;}
-  header img{height:48px;}
+.hero{
+  padding:100px 60px;
+  text-align:center;
+  max-width:1200px;
+  margin:auto;
+}
+.hero h1{
+  font-size:3rem;
+  margin-bottom:20px;
+}
+.hero p{
+  color:var(--muted);
+  max-width:800px;
+  margin:auto;
+}
 
-  /* Desktop nav */
-  nav.desktop-nav { display:flex; align-items:center; }
-  nav.desktop-nav a{margin-left:28px;color:var(--muted);text-decoration:none;font-weight:500;}
-  nav.desktop-nav a:hover{color:var(--text);}
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:60px;
+}
 
-  /* Hamburger menu */
-  .hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
-  .hamburger span { display:block; height:3px; width:25px; background:var(--text); border-radius:2px; }
+.case-study{
+  background:var(--panel);
+  border:1px solid #1f1f25;
+  border-radius:12px;
+  padding:40px;
+  margin-bottom:40px;
+}
+.case-study h2{
+  margin-top:0;
+  color:var(--accent);
+}
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  margin-bottom:20px;
+  font-size:0.95rem;
+  color:var(--muted);
+}
+.meta span{
+  background:#0b0b0d;
+  padding:6px 12px;
+  border-radius:20px;
+  border:1px solid #1f1f25;
+}
 
-  /* Mobile nav */
-  nav.mobile-nav { display:none; flex-direction:column; position:absolute; top:80px; left:0; width:100%; background:var(--panel); padding:20px 0; border-top:1px solid #1f1f25; }
-  nav.mobile-nav a{padding:10px 20px; color:var(--text); text-decoration:none; font-weight:500;}
-  nav.mobile-nav a:hover{background:#1f1f25;}
-  nav.mobile-nav.show { display:flex; }
+.case-study h3{
+  margin-top:30px;
+}
+.case-study p{
+  color:var(--muted);
+}
 
-  /* Hero */
-  .hero{padding:100px 60px;text-align:center;}
-  .hero h1{font-size:3rem;margin-bottom:20px;}
-  .hero p{color:var(--muted);}
-
-  /* Projects */
-  #projectList{max-width:1200px;margin:40px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
-  .project-card{background:var(--panel);padding:20px;border-radius:10px;border:1px solid #1f1f25;}
-  .project-card h3{margin-top:0;}
-  .project-card p{color:var(--muted);}
-
-  /* Footer */
-  footer{padding:60px;background:#070709;border-top:1px solid #1f1f25;display:grid;grid-template-columns: repeat(auto-fit,minmax(200px,1fr));gap:40px;}
-  footer h4{margin-bottom:12px;}
-  footer a{display:block;color:var(--muted);text-decoration:none;margin-bottom:8px;}
-  footer a:hover{color:var(--text);}
-  .copyright{grid-column:1/-1;color:var(--muted);font-size:0.9rem;margin-top:20px;text-align:center;}
-
-  /* Responsive */
-  @media (max-width:1024px){
-    nav.desktop-nav { display:none; }
-    .hamburger { display:flex; }
-  }
+footer{
+  padding:60px;
+  background:#070709;
+  border-top:1px solid #1f1f25;
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap:40px;
+}
+footer h4{margin-bottom:12px;}
+footer a{
+  display:block;
+  color:var(--muted);
+  text-decoration:none;
+  margin-bottom:8px;
+}
+footer a:hover{color:var(--text);}
+.copyright{
+  grid-column:1/-1;
+  color:var(--muted);
+  font-size:0.9rem;
+  text-align:center;
+  margin-top:20px;
+}
 </style>
 </head>
+
 <body>
 
 <header>
   <img src="logo.png" alt="LG Supply Ltd Logo" />
-
-  <!-- Desktop nav -->
-  <nav class="desktop-nav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="tenders.html">Tenders</a>
-    <a href="suppliers.html">Suppliers</a>
-    <a href="compliance.html">Compliance</a>
-    <a href="market-insights.html">Market Insights</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <!-- Hamburger -->
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <!-- Mobile nav -->
-  <nav class="mobile-nav" id="mobile-nav">
+  <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="tenders.html">Tenders</a>
@@ -97,13 +136,112 @@
 </header>
 
 <div class="hero">
-  <h1>Ongoing Projects</h1>
-  <p>Explore the latest projects managed by LG Supply Ltd.</p>
+  <h1>Projects & Case Studies</h1>
+  <p>
+    A selection of infrastructure, environmental, and engineering projects
+    successfully supported and delivered by LG Supply Ltd across Southern Africa.
+  </p>
 </div>
 
-<div id="projectList">
-  <!-- Project cards will appear here dynamically -->
-</div>
+<section>
+
+  <!-- CASE STUDY 1 -->
+  <div class="case-study">
+    <h2>Lesotho Lowlands Water Development Project – Phase II</h2>
+
+    <div class="meta">
+      <span>Sector: Water Infrastructure</span>
+      <span>Region: Southern Africa</span>
+      <span>Project Type: Bulk Water Supply Systems</span>
+    </div>
+
+    <h3>Project Overview</h3>
+    <p>
+      LG Supply Ltd supported a large-scale national water infrastructure programme
+      aimed at improving domestic, industrial, and institutional water supply in
+      rapidly growing urban and peri-urban areas.
+    </p>
+
+    <h3>Scope of Work</h3>
+    <p>
+      The project involved technical review of engineering designs, support for
+      design-and-build procurement processes, preparation of tender documentation,
+      and construction supervision of intake works, treatment facilities,
+      transmission pipelines, and distribution networks.
+    </p>
+
+    <h3>Key Outcomes</h3>
+    <p>
+      The assignment contributed to improved water supply reliability, strengthened
+      project governance, and ensured compliance with international engineering
+      standards while supporting long-term operational sustainability.
+    </p>
+  </div>
+
+  <!-- CASE STUDY 2 -->
+  <div class="case-study">
+    <h2>Environmental Flow Assessment & Water Quality Modelling</h2>
+
+    <div class="meta">
+      <span>Sector: Environmental & Water Resources</span>
+      <span>Region: Southern Africa</span>
+      <span>Project Type: Environmental Assessment</span>
+    </div>
+
+    <h3>Project Overview</h3>
+    <p>
+      LG Supply Ltd delivered specialist environmental and hydrological services to
+      support a strategic water abstraction and augmentation initiative while
+      safeguarding river ecosystems.
+    </p>
+
+    <h3>Scope of Work</h3>
+    <p>
+      Services included environmental flow assessments, hydrological and hydraulic
+      analysis, aquatic biodiversity studies, water quality modelling, and the
+      development of sustainable flow management frameworks.
+    </p>
+
+    <h3>Key Outcomes</h3>
+    <p>
+      The project established clear environmental flow requirements, strengthened
+      environmental compliance, and provided practical operational guidelines
+      balancing infrastructure needs with ecosystem protection.
+    </p>
+  </div>
+
+  <!-- CASE STUDY 3 -->
+  <div class="case-study">
+    <h2>Multi-Phase Water Infrastructure Planning & Supervision</h2>
+
+    <div class="meta">
+      <span>Sector: Infrastructure Development</span>
+      <span>Region: Southern Africa</span>
+      <span>Project Type: Planning & Supervision</span>
+    </div>
+
+    <h3>Project Overview</h3>
+    <p>
+      LG Supply Ltd supported a multi-phase water infrastructure development program
+      designed to expand and modernize regional water supply systems serving growing
+      urban centers.
+    </p>
+
+    <h3>Scope of Work</h3>
+    <p>
+      The scope covered design reviews, tender preparation, procurement support,
+      contractor evaluation, and construction supervision across treatment plants,
+      reservoirs, pumping stations, and distribution networks.
+    </p>
+
+    <h3>Key Outcomes</h3>
+    <p>
+      The project achieved improved delivery coordination, enhanced construction
+      quality, and increased system capacity and resilience.
+    </p>
+  </div>
+
+</section>
 
 <footer>
   <div>
@@ -124,47 +262,10 @@
     <a href="privacy.html">Privacy Policy</a>
     <a href="anti-corruption.html">Anti-Corruption Policy</a>
   </div>
-  <div class="copyright">© 2026 LG Supply Ltd. All rights reserved.</div>
+  <div class="copyright">
+    © 2026 LG Supply Ltd. All rights reserved.
+  </div>
 </footer>
-
-<script>
-  // Hamburger toggle
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobile-nav');
-  hamburger.addEventListener('click', () => {
-    mobileNav.classList.toggle('show');
-  });
-
-  // Load projects dynamically
-  async function loadProjects() {
-    try {
-      const res = await fetch('http://localhost:5000/api/projects');
-      const result = await res.json();
-
-      if (!result.success) {
-        document.getElementById('projectList').innerHTML = '<p>Failed to load projects.</p>';
-        return;
-      }
-
-      const container = document.getElementById('projectList');
-      container.innerHTML = result.projects.map(p => `
-        <div class="project-card">
-          <h3>${p.title}</h3>
-          <p>${p.description}</p>
-          <p><strong>Start Date:</strong> ${p.start_date ? new Date(p.start_date).toLocaleDateString() : 'N/A'}</p>
-          <p><strong>End Date:</strong> ${p.end_date ? new Date(p.end_date).toLocaleDateString() : 'N/A'}</p>
-          <p><strong>Status:</strong> ${p.status}</p>
-        </div>
-      `).join('');
-
-    } catch (err) {
-      console.error(err);
-      document.getElementById('projectList').innerHTML = '<p>Error loading projects.</p>';
-    }
-  }
-
-  loadProjects();
-</script>
 
 </body>
 </html>
