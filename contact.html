@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | LG Supply Ltd</title>
-<link rel="icon" href="logo.png" type="image/png">
+<link rel="icon" href="logo.png" type="image/png"> <!-- Favicon as logo -->
+
 <style>
 :root {
   --bg:#0b0b0d;
@@ -12,113 +13,45 @@
   --accent:#c9a24d;
   --text:#eaeaea;
   --muted:#9a9a9a;
+  --success:#4BB543;
+  --error:#FF4C4C;
 }
-
 *{box-sizing:border-box;}
-body{
-  margin:0;
-  font-family:'Inter','Segoe UI',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
+body{margin:0;font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);}
 
-/* HEADER */
-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:20px 60px;
-  background: linear-gradient(180deg,#0b0b0d,#0e0e12);
-  border-bottom:1px solid #1f1f25;
-}
+/* Header */
+header{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background: linear-gradient(180deg,#0b0b0d,#0e0e12);border-bottom:1px solid #1f1f25;}
 header img{height:48px;}
 
-nav.desktop-nav {
-  display:flex;
-  align-items:center;
-}
-nav.desktop-nav a{
-  margin-left:28px;
-  color:var(--muted);
-  text-decoration:none;
-  font-weight:500;
-}
+/* Desktop nav */
+nav.desktop-nav { display:flex; align-items:center; }
+nav.desktop-nav a{margin-left:28px;color:var(--muted);text-decoration:none;font-weight:500;}
 nav.desktop-nav a:hover{color:var(--text);}
 
-/* HAMBURGER */
-.hamburger {
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-  gap:5px;
-}
-.hamburger span {
-  display:block;
-  height:3px;
-  width:25px;
-  background:var(--text);
-  border-radius:2px;
-}
+/* Hamburger */
+.hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
+.hamburger span { display:block; height:3px; width:25px; background:var(--text); border-radius:2px; }
 
-/* MOBILE nav */
-nav.mobile-nav {
-  display:none;
-  flex-direction:column;
-  position:absolute;
-  top:80px;
-  left:0;
-  width:100%;
-  background:var(--panel);
-  padding:20px 0;
-  border-top:1px solid #1f1f25;
-}
-nav.mobile-nav a{
-  padding:10px 20px;
-  color:var(--text);
-  text-decoration:none;
-  font-weight:500;
-}
+/* Mobile nav */
+nav.mobile-nav { display:none; flex-direction:column; position:absolute; top:80px; left:0; width:100%; background:var(--panel); padding:20px 0; border-top:1px solid #1f1f25; }
+nav.mobile-nav a{padding:10px 20px; color:var(--text); text-decoration:none; font-weight:500;}
 nav.mobile-nav a:hover{background:#1f1f25;}
 nav.mobile-nav.show { display:flex; }
 
-/* HERO */
-.hero {
-  position: relative;
-  width: 100%;
+/* Hero */
+.hero{
   padding:120px 60px;
   text-align:center;
-  color:#fff;
-  overflow:hidden;
-}
-.hero::before {
-  content:"";
-  position:absolute;
-  top:50%;
-  left:50%;
-  width:120%;
-  height:120%;
-  background: url('logo.png') center/contain no-repeat;
-  opacity:0.08;
-  transform: translate(-50%, -50%);
-  z-index:0;
-  transition: transform 0.2s ease-out;
-}
-.hero h1{
-  position: relative;
-  z-index:2;
-  font-size:3rem;
-  margin-bottom:20px;
-  text-shadow:1px 1px 5px rgba(0,0,0,0.7);
-}
-.hero p{
-  position: relative;
-  z-index:2;
-  max-width:700px;
+  max-width:1200px;
   margin:auto;
-  text-shadow:1px 1px 5px rgba(0,0,0,0.5);
+  background: url('https://images.unsplash.com/photo-1556740769-9014f5f3e2b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600') center/cover no-repeat; /* Hero background */
+  border-radius:12px;
+  color:#fff;
 }
+.hero h1{font-size:3rem;margin-bottom:20px;text-shadow:1px 1px 5px rgba(0,0,0,0.7);}
+.hero p{color:#f0f0f0;max-width:700px;margin:auto;text-shadow:1px 1px 5px rgba(0,0,0,0.5);}
 
-/* FORM */
+/* Form */
 form{
   max-width:600px;
   margin:40px auto;
@@ -136,6 +69,7 @@ input, textarea{
   background:#0b0b0d;
   color:var(--text);
   width:100%;
+  transition: border 0.3s;
 }
 textarea{resize:vertical;}
 button{
@@ -149,36 +83,37 @@ button{
 }
 button:hover{opacity:0.9;}
 
-/* FOOTER */
-footer{
-  padding:60px;
-  background:#070709;
-  border-top:1px solid #1f1f25;
-  display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-  gap:40px;
-}
-footer h4{margin-bottom:12px;}
-footer a{
-  display:block;
-  color:var(--muted);
-  text-decoration:none;
-  margin-bottom:8px;
-}
-footer a:hover{color:var(--text);}
-.copyright{
-  grid-column:1/-1;
-  color:var(--muted);
-  font-size:0.9rem;
-  margin-top:20px;
+/* Success/Error message */
+.form-message{
   text-align:center;
+  font-weight:600;
+  margin-top:-10px;
+  margin-bottom:10px;
+  opacity:0;
+  transition: opacity 0.5s ease;
 }
+.form-message.show{opacity:1;}
 
-/* RESPONSIVE */
+/* Contact Info */
+.contact-info{
+  max-width:600px;
+  margin:20px auto 60px auto;
+  text-align:center;
+  color:var(--muted);
+}
+.contact-info p{margin:6px 0;}
+
+/* Footer */
+footer{padding:60px;background:#070709;border-top:1px solid #1f1f25;display:grid;grid-template-columns: repeat(auto-fit,minmax(200px,1fr));gap:40px;}
+footer h4{margin-bottom:12px;}
+footer a{display:block;color:var(--muted);text-decoration:none;margin-bottom:8px;}
+footer a:hover{color:var(--text);}
+.copyright{grid-column:1/-1;color:var(--muted);font-size:0.9rem;margin-top:20px;text-align:center;}
+
+/* Responsive */
 @media (max-width:1024px){
   nav.desktop-nav { display:none; }
   .hamburger { display:flex; }
-  .hero{padding:80px 24px;}
 }
 </style>
 </head>
@@ -230,7 +165,14 @@ footer a:hover{color:var(--text);}
   <input type="tel" name="phone" placeholder="Phone Number">
   <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
   <button type="submit">Send Message</button>
+  <div class="form-message" id="formMessage"></div>
 </form>
+
+<div class="contact-info">
+  <p><strong>Phone:</strong> +27 11 123 4567</p>
+  <p><strong>Email:</strong> info@lgsupply.com</p>
+  <p><strong>Address:</strong> 123 Industrial Road, Johannesburg, South Africa</p>
+</div>
 
 <footer>
   <div>
@@ -260,34 +202,6 @@ footer a:hover{color:var(--text);}
   const mobileNav = document.getElementById('mobile-nav');
   hamburger.addEventListener('click', () => {
     mobileNav.classList.toggle('show');
-  });
-
-  // Contact form submission
-  const contactForm = document.getElementById('contactForm');
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = Object.fromEntries(new FormData(contactForm).entries());
-    try {
-      const res = await fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-      const result = await res.json();
-      alert(result.message);
-      if(result.success) contactForm.reset();
-    } catch(err) {
-      console.error(err);
-      alert('Server error, try again later.');
-    }
-  });
-
-  // Parallax hero effect
-  const hero = document.querySelector('.hero');
-  window.addEventListener('scroll', () => {
-    const scroll = window.scrollY;
-    hero.style.setProperty('--bg-move', `${scroll * 0.2}px`);
-    hero.style.backgroundPosition = `center calc(50% + ${scroll * 0.2}px)`;
   });
 </script>
 
