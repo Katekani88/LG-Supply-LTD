@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suppliers | LG Supply Ltd</title>
+<title>Suppliers | BALSIRA </title>
 <link rel="icon" href="logo.png">
 
 <style>
@@ -14,172 +14,52 @@
   --text:#eaeaea;
   --muted:#9a9a9a;
 }
-
 * { box-sizing: border-box; }
-
-body {
-  margin:0;
-  font-family:'Inter','Segoe UI',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
+body { margin:0;font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);}
 
 /* HEADER */
-header {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:20px 60px;
-  background: linear-gradient(180deg,#0b0b0d,#0e0e12);
-  border-bottom:1px solid #1f1f25;
-}
+header { display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background: linear-gradient(180deg,#0b0b0d,#0e0e12);border-bottom:1px solid #1f1f25; }
+header img { height:60px; } /* desktop logo bigger */
 
-header img { height:48px; }
+nav { display:flex; gap:28px; }
 
-nav {
-  display:flex;
-  gap:28px;
-}
-
-nav a {
-  color:var(--muted);
-  text-decoration:none;
-  font-weight:500;
-}
-
+nav a { color:var(--muted); text-decoration:none; font-weight:500; }
 nav a:hover { color:var(--text); }
 
 /* HAMBURGER */
-.hamburger {
-  display:none;
-  font-size:28px;
-  background:none;
-  border:none;
-  color:var(--text);
-  cursor:pointer;
-}
+.hamburger { display:none; font-size:28px; background:none; border:none; color:var(--text); cursor:pointer; }
 
 /* HERO */
-.hero {
-  padding:100px 60px;
-  text-align:center;
-}
-
-.hero h1 {
-  font-size:3rem;
-  margin-bottom:20px;
-}
-
+.hero { padding:100px 60px; text-align:center; }
+.hero h1 { font-size:3rem; margin-bottom:20px; }
 .hero p { color:var(--muted); }
 
 /* FORM */
-form {
-  max-width:600px;
-  margin:40px auto;
-  background:var(--panel);
-  padding:30px;
-  border-radius:10px;
-  border:1px solid #1f1f25;
-  display:grid;
-  gap:20px;
-}
-
-input, select, textarea {
-  padding:12px;
-  border-radius:6px;
-  border:1px solid #2b2b33;
-  background:#0b0b0d;
-  color:var(--text);
-  width:100%;
-}
-
+form { max-width:600px; margin:40px auto; background:var(--panel); padding:30px; border-radius:10px; border:1px solid #1f1f25; display:grid; gap:20px; }
+input, select, textarea { padding:12px; border-radius:6px; border:1px solid #2b2b33; background:#0b0b0d; color:var(--text); width:100%; }
 textarea { resize:vertical; }
-
-button {
-  padding:12px 24px;
-  border:none;
-  border-radius:6px;
-  background:var(--accent);
-  color:#000;
-  font-weight:600;
-  cursor:pointer;
-}
-
+button { padding:12px 24px; border:none; border-radius:6px; background:var(--accent); color:#000; font-weight:600; cursor:pointer; }
 button:hover { opacity:0.9; }
 
-.subscribe-section {
-  margin:60px 0;
-  text-align:center;
-}
-
-h2 {
-  color:var(--accent);
-  margin-bottom:10px;
-}
+.subscribe-section { margin:60px 0; text-align:center; }
+h2 { color:var(--accent); margin-bottom:10px; }
 
 /* FOOTER */
-footer {
-  padding:60px;
-  background:#070709;
-  border-top:1px solid #1f1f25;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:40px;
-}
-
+footer { padding:60px; background:#070709; border-top:1px solid #1f1f25; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:40px; }
 footer h4 { margin-bottom:12px; }
-
-footer a {
-  display:block;
-  color:var(--muted);
-  text-decoration:none;
-  margin-bottom:8px;
-}
-
+footer a { display:block; color:var(--muted); text-decoration:none; margin-bottom:8px; }
 footer a:hover { color:var(--text); }
-
-footer .copyright {
-  grid-column:1/-1;
-  color:var(--muted);
-  font-size:0.9rem;
-  margin-top:20px;
-  text-align:center;
-}
+footer .copyright { grid-column:1/-1; color:var(--muted); font-size:0.9rem; margin-top:20px; text-align:center; }
 
 /* MOBILE */
 @media (max-width: 900px) {
-  header {
-    padding:20px;
-  }
-
-  nav {
-    position:absolute;
-    top:80px;
-    left:0;
-    right:0;
-    background:#0b0b0d;
-    flex-direction:column;
-    align-items:center;
-    display:none;
-    padding:30px 0;
-    border-bottom:1px solid #1f1f25;
-  }
-
-  nav.show {
-    display:flex;
-  }
-
-  .hamburger {
-    display:block;
-  }
-
-  .hero {
-    padding:70px 20px;
-  }
-
-  .hero h1 {
-    font-size:2.2rem;
-  }
+  header { padding:20px; }
+  nav { position:absolute; top:80px; left:0; right:0; background:#0b0b0d; flex-direction:column; align-items:center; display:none; padding:30px 0; border-bottom:1px solid #1f1f25; }
+  nav.show { display:flex; }
+  .hamburger { display:block; }
+  header img { height:50px; } /* mobile logo */
+  .hero { padding:70px 20px; }
+  .hero h1 { font-size:2.2rem; }
 }
 </style>
 </head>
@@ -187,7 +67,7 @@ footer .copyright {
 <body>
 
 <header>
-  <img src="logo.png" alt="LG Supply Ltd Logo">
+  <img src="logo.png" alt="BALSIRA GROUP Logo">
 
   <button class="hamburger" id="hamburger">☰</button>
 
@@ -196,6 +76,7 @@ footer .copyright {
     <a href="about.html">About</a>
     <a href="tenders.html">Tenders</a>
     <a href="suppliers.html">Suppliers</a>
+    <a href="products.html">Products</a> <!-- added -->
     <a href="compliance.html">Compliance</a>
     <a href="market-insights.html">Market Insights</a>
     <a href="projects.html">Projects</a>
@@ -205,7 +86,7 @@ footer .copyright {
 
 <div class="hero">
   <h1>Supplier Registration</h1>
-  <p>Register your company to supply engineering equipment to LG Supply Ltd.</p>
+  <p>Register your company to supply engineering equipment to BALSIRA GROUP.</p>
 </div>
 
 <form id="supplierForm">
@@ -238,7 +119,7 @@ footer .copyright {
 
 <footer>
   <div>
-    <h4>LG Supply Ltd</h4>
+    <h4>BALSIRA GROUP</h4>
     <a href="about.html">About Us</a>
     <a href="careers.html">Careers</a>
     <a href="news.html">News</a>
@@ -259,7 +140,7 @@ footer .copyright {
   </div>
 
   <div class="copyright">
-    © 2026 LG Supply Ltd. All rights reserved.
+    © 2026 BALSIRA GROUP. All rights reserved.
   </div>
 </footer>
 
