@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tenders | LG Supply Ltd</title>
+<title>Tenders | BALSIRA </title>
 <link rel="icon" type="image/png" href="logo.png">
 <style>
 :root {
@@ -18,7 +18,7 @@ body{margin:0;font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);col
 
 /* HEADER */
 header{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background: linear-gradient(180deg,#0b0b0d,#0e0e12);border-bottom:1px solid #1f1f25;position:relative;}
-header img{height:48px;}
+header img{height:60px;} /* logo bigger */
 .desktop-nav a{margin-left:28px;color:var(--muted);text-decoration:none;font-weight:500;}
 .desktop-nav a:hover{color:var(--text);}
 .hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;}
@@ -64,13 +64,14 @@ footer a:hover{color:var(--text);}
 @media(max-width:1024px){
   .desktop-nav{display:none;}
   .hamburger{display:flex;}
+  header img{height:50px;} /* mobile logo size */
 }
 </style>
 </head>
 <body>
 
 <header>
-  <img src="logo.png" alt="LG Supply Ltd Logo" />
+  <img src="logo.png" alt="BALSIRA GROUP Logo" />
 
   <!-- Desktop nav -->
   <nav class="desktop-nav">
@@ -78,6 +79,7 @@ footer a:hover{color:var(--text);}
     <a href="about.html">About</a>
     <a href="tenders.html">Tenders</a>
     <a href="suppliers.html">Suppliers</a>
+    <a href="products.html">Products</a> <!-- added -->
     <a href="compliance.html">Compliance</a>
     <a href="market-insights.html">Market Insights</a>
     <a href="projects.html">Projects</a>
@@ -95,6 +97,7 @@ footer a:hover{color:var(--text);}
     <a href="about.html">About</a>
     <a href="tenders.html">Tenders</a>
     <a href="suppliers.html">Suppliers</a>
+    <a href="products.html">Products</a> <!-- added -->
     <a href="compliance.html">Compliance</a>
     <a href="market-insights.html">Market Insights</a>
     <a href="projects.html">Projects</a>
@@ -104,7 +107,7 @@ footer a:hover{color:var(--text);}
 
 <div class="hero">
   <h1>Open Tenders</h1>
-  <p>Explore the latest tenders issued by LG Supply Ltd for various sectors across Africa.</p>
+  <p>Explore the latest tenders issued by BALSIRA GROUP for various sectors across Africa.</p>
 </div>
 
 <!-- Sector Filter -->
@@ -122,7 +125,7 @@ footer a:hover{color:var(--text);}
 
 <footer>
   <div>
-    <h4>LG Supply Ltd</h4>
+    <h4>BALSIRA GROUP</h4>
     <a href="about.html">About Us</a>
     <a href="careers.html">Careers</a>
     <a href="news.html">News</a>
@@ -139,7 +142,7 @@ footer a:hover{color:var(--text);}
     <a href="privacy.html">Privacy Policy</a>
     <a href="anti-corruption.html">Anti-Corruption Policy</a>
   </div>
-  <div class="copyright">© 2026 LG Supply Ltd. All rights reserved.</div>
+  <div class="copyright">© 2026 BALSIRA GROUP. All rights reserved.</div>
 </footer>
 
 <script>
@@ -165,7 +168,7 @@ function loadTenders(filterSector = "all") {
       <h3>${t.title}</h3>
       <p>${t.description}</p>
       <p><strong>Sector:</strong> ${t.sector}</p>
-      <p><strong>Closing Date:</strong> ${new Date(t.closing_date).toLocaleDateString()}</p>
+      <p><strong>Closing Date:</strong> ${new Date(t.closing_date).toLocaleDateString('en-GB')}</p>
       <p><strong>Status:</strong> ${t.status}</p>
     </div>
   `).join('');
