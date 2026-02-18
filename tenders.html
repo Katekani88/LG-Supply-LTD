@@ -33,9 +33,7 @@ header{
   border-bottom:1px solid #1f1f25;
   position:relative;
 }
-header img{
-  height:80px; /* bigger logo */
-}
+header img{height:60px;} /* logo size */
 .desktop-nav a{
   margin-left:28px;
   color:var(--muted);
@@ -44,52 +42,32 @@ header img{
 }
 .desktop-nav a:hover{color:var(--text);}
 
-/* Hamburger menu */
+/* HAMBURGER */
 .hamburger{
   display:none;
   flex-direction:column;
-  justify-content:space-between;
-  width:28px;
-  height:20px;
   cursor:pointer;
 }
 .hamburger span{
-  display:block;
+  width:26px;
   height:3px;
-  width:100%;
   background:var(--text);
-  border-radius:2px;
+  margin:4px 0;
 }
 
-/* MOBILE NAV with smooth slide */
+/* MOBILE NAV */
 .mobile-nav{
-  max-height:0; /* hidden by default */
-  overflow:hidden;
+  display:none;
   flex-direction:column;
-  position:absolute;
-  top:100%;
-  right:20px;
-  background:var(--panel);
-  width:200px;
-  border:1px solid #1f1f25;
-  border-radius:6px;
-  transition:max-height 0.4s ease;
-  z-index:10;
-}
-.mobile-nav.show{
-  max-height:500px; /* enough for all links */
+  background:#0e0e12;
 }
 .mobile-nav a{
-  padding:12px 20px;
-  border-bottom:1px solid #1f1f25;
-  color:var(--text);
+  padding:16px 24px;
+  border-top:1px solid #1f1f25;
+  color:var(--muted);
   text-decoration:none;
-  font-weight:500;
 }
-.mobile-nav a:hover{
-  background:var(--accent);
-  color:#000;
-}
+.mobile-nav a:hover{color:var(--text);}
 
 /* HERO */
 .hero{
@@ -230,15 +208,9 @@ footer{
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  header{
-    padding:15px 20px;
-  }
-  .desktop-nav{
-    display:none;
-  }
-  .hamburger{
-    display:flex;
-  }
+  .desktop-nav{display:none;}
+  .hamburger{display:flex;}
+  header img{height:50px;} /* smaller logo on mobile */
 }
 </style>
 </head>
@@ -247,28 +219,37 @@ footer{
 
 <header>
   <img src="logo.png" alt="BALSIRA GROUP Logo">
+
   <nav class="desktop-nav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="tenders.html">Tenders</a>
     <a href="suppliers.html">Suppliers</a>
     <a href="products.html">Products</a>
+    <a href="compliance.html">Compliance</a>
+    <a href="market-insights.html">Market Insights</a>
+    <a href="projects.html">Projects</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <div class="hamburger" onclick="toggleMobileNav()">
+
+  <div class="hamburger" onclick="toggleMenu()">
     <span></span>
     <span></span>
     <span></span>
   </div>
-  <nav class="mobile-nav" id="mobileNav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="tenders.html">Tenders</a>
-    <a href="suppliers.html">Suppliers</a>
-    <a href="products.html">Products</a>
-    <a href="contact.html">Contact</a>
-  </nav>
 </header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="tenders.html">Tenders</a>
+  <a href="suppliers.html">Suppliers</a>
+  <a href="products.html">Products</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="market-insights.html">Market Insights</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
+</div>
 
 <div class="hero">
   <h1>Open Equipment Tenders</h1>
@@ -293,9 +274,9 @@ footer{
 
 <script>
 // --- MOBILE MENU ---
-function toggleMobileNav(){
-  const nav = document.getElementById("mobileNav");
-  nav.classList.toggle("show");
+function toggleMenu(){
+  const nav = document.getElementById('mobileNav');
+  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
 }
 
 // --- TENDERS SCRIPT ---
