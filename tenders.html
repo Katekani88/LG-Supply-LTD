@@ -3,424 +3,541 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tenders | BALSIRA</title>
+<title>Tender Access | BALSIRA GROUP</title>
 <link rel="icon" type="image/png" href="logo.png">
-
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
 :root {
-  --bg:#0b0b0d;
-  --panel:#121217;
-  --accent:#c9a24d;
-  --text:#eaeaea;
-  --muted:#9a9a9a;
-}
-*{box-sizing:border-box;}
-body{
-  margin:0;
-  font-family:'Inter','Segoe UI',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
+  --charcoal: #000000;
+  --steel: #111111;
+  --accent: #FFFFFF;
+  --accent-hover: #CCCCCC;
+  --off-white: #FFFFFF;
+  --mid-grey: #888888;
+  --light-grey: #CCCCCC;
+  --surface: #111111;
+  --surface2: #1A1A1A;
+  --border: rgba(255,255,255,0.15);
 }
 
-/* HEADER */
-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:20px 60px;
-  background:linear-gradient(180deg,#0b0b0d,#0e0e12);
-  border-bottom:1px solid #1f1f25;
-  position:relative;
-}
-header img{height:60px;} /* logo size */
-.desktop-nav a{
-  margin-left:28px;
-  color:var(--muted);
-  text-decoration:none;
-  font-weight:500;
-}
-.desktop-nav a:hover{color:var(--text);}
-
-/* HAMBURGER */
-.hamburger{
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-}
-.hamburger span{
-  width:26px;
-  height:3px;
-  background:var(--text);
-  margin:4px 0;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: var(--charcoal);
+  color: var(--off-white);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* MOBILE NAV */
-.mobile-nav{
-  display:none;
-  flex-direction:column;
-  background:#0e0e12;
+/*  NAV  */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 52px; height: 66px;
+  background: rgba(0,0,0,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
 }
-.mobile-nav a{
-  padding:16px 24px;
-  border-top:1px solid #1f1f25;
-  color:var(--muted);
-  text-decoration:none;
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: 22px; letter-spacing: 0.12em;
+  color: var(--off-white); text-decoration: none;
 }
-.mobile-nav a:hover{color:var(--text);}
+.nav-logo span { color: var(--accent); }
+nav.desktop-nav { display: flex; align-items: center; gap: 28px; }
+nav.desktop-nav a {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mid-grey); text-decoration: none;
+  transition: color 0.2s;
+}
+nav.desktop-nav a:hover, nav.desktop-nav a.active { color: var(--accent); }
+.nav-cta {
+  background: var(--accent); color: var(--charcoal);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 9px 22px;
+  text-decoration: none; transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--accent-hover); }
 
-/* HERO */
-.hero{
-  padding:120px 60px;
-  text-align:center;
-  background:
-    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
-    url('https://cloudfront-us-east-1.images.arcpublishing.com/adn/6BQOV7F6Z5HD5O75DZH52Q43FI.jpg');
-  background-size:cover;
-  background-position:center;
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; height: 2px; width: 24px; background: var(--off-white); transition: 0.3s; }
+nav.mobile-nav {
+  display: none; flex-direction: column;
+  position: fixed; top: 66px; left: 0; right: 0;
+  background: #000000; border-bottom: 1px solid var(--border);
+  z-index: 199; padding: 8px 0;
 }
-.hero h1{font-size:3rem;margin-bottom:20px; color:var(--accent);}
-.hero p{
-  color:var(--muted);
-  max-width:700px;
-  margin:auto;
-  font-size:1.2rem;
+nav.mobile-nav.show { display: flex; }
+nav.mobile-nav a {
+  padding: 13px 28px; color: var(--mid-grey); text-decoration: none;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: color 0.2s, background 0.2s;
 }
+nav.mobile-nav a:hover { color: var(--accent); background: rgba(255,255,255,0.05); }
 
-/* FILTER */
-#filterBar{
-  max-width:1200px;
-  margin:20px auto;
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-.filter-btn{
-  padding:10px 20px;
-  border-radius:6px;
-  border:1px solid var(--muted);
-  background:transparent;
-  color:var(--text);
-  cursor:pointer;
-  font-weight:500;
-}
-.filter-btn.active,
-.filter-btn:hover{
-  background:var(--accent);
-  color:#000;
-  border-color:var(--accent);
-}
+/*  PAGE TOP OFFSET  */
+.page-body { padding-top: 66px; }
 
-/* GRID */
-#tenderList{
-  max-width:1200px;
-  margin:20px auto 20px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:20px;
+/*  HERO BANNER (inner pages)  */
+.page-hero {
+  background: linear-gradient(105deg, rgba(0,0,0,0.96) 50%, rgba(20,20,20,0.85) 100%),
+              var(--hero-img, url('https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg')) center/cover no-repeat;
+  padding: 80px 52px 72px;
+  border-bottom: 1px solid var(--border);
 }
-
-/* CARD */
-.tender-card{
-  background:var(--panel);
-  padding:20px;
-  border-radius:10px;
-  border:1px solid #1f1f25;
+.page-hero-inner { max-width: 860px; }
+.eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--accent);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
 }
-
-.tender-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  cursor:pointer;
+.eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--accent); }
+.page-hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 5vw, 68px); font-weight: 800;
+  text-transform: uppercase; line-height: 0.95;
+  color: var(--off-white); margin-bottom: 20px;
+}
+.page-hero p {
+  font-size: 15px; color: var(--mid-grey); max-width: 560px; line-height: 1.75;
 }
 
-.tender-header h3{
-  color:var(--accent);
+/*  SECTION  */
+.section { padding: 80px 52px; max-width: 1280px; margin: 0 auto; }
+.section-sm { padding: 60px 52px; max-width: 1280px; margin: 0 auto; }
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(28px, 3vw, 44px); font-weight: 800;
+  text-transform: uppercase; color: var(--off-white);
+  margin-bottom: 16px; line-height: 1;
+}
+.section-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+}
+.section-desc {
+  font-size: 15px; color: var(--mid-grey); max-width: 600px;
+  line-height: 1.75; margin-bottom: 48px;
+}
+.divider { width: 44px; height: 3px; background: var(--accent); margin: 16px 0 32px; }
+
+/*  GRID  */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; }
+
+/*  CARD  */
+.card {
+  background: var(--surface2); padding: 36px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px; font-weight: 800; text-transform: uppercase;
+  color: var(--off-white); margin-bottom: 10px;
+}
+.card p { font-size: 14px; color: var(--mid-grey); line-height: 1.7; }
+
+/*  PRODUCT CARD  */
+.product-card {
+  background: var(--surface); overflow: hidden;
+  transition: transform 0.25s; text-decoration: none; color: inherit;
+  display: block;
+}
+.product-card:hover { transform: translateY(-3px); }
+.product-card img { width: 100%; height: 200px; object-fit: cover; display: block; filter: brightness(0.85); }
+.product-card-content { padding: 28px; }
+.product-card-content h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 19px; font-weight: 800; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 8px;
+}
+.product-card-content p { font-size: 13px; color: var(--mid-grey); line-height: 1.65; }
+.product-card-content ul {
+  margin-top: 12px; padding-left: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.product-card-content li {
+  font-size: 12px; color: var(--light-grey); padding-left: 16px; position: relative;
+}
+.product-card-content li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 10px; }
+
+/*  BUTTONS  */
+.btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 13px; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 13px 30px;
+  text-decoration: none; display: inline-block; transition: all 0.2s;
+}
+.btn-primary { background: var(--accent); color: var(--charcoal); }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-outline { border: 1px solid rgba(255,255,255,0.3); color: var(--off-white); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+/*  FORM  */
+.form-wrap {
+  max-width: 640px; margin: 0 auto;
+  background: var(--surface); padding: 44px;
+  border: 1px solid var(--border);
+}
+.form-wrap input,
+.form-wrap select,
+.form-wrap textarea {
+  width: 100%; padding: 12px 16px;
+  background: var(--surface2); border: 1px solid rgba(255,255,255,0.12);
+  color: var(--off-white); font-family: 'Inter', sans-serif; font-size: 14px;
+  outline: none; transition: border 0.2s; margin-bottom: 16px; display: block;
+}
+.form-wrap input:focus,
+.form-wrap select:focus,
+.form-wrap textarea:focus { border-color: var(--accent); }
+.form-wrap select option { background: var(--surface2); }
+.form-wrap textarea { resize: vertical; min-height: 120px; }
+.form-wrap label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mid-grey); display: block; margin-bottom: 6px;
+}
+.form-message {
+  font-size: 13px; padding: 10px; text-align: center; margin-top: 8px;
+  display: none;
+}
+.form-message.success { background: rgba(74,183,74,0.15); color: #6fcf6f; display: block; }
+.form-message.error { background: rgba(255,76,76,0.15); color: #ff8080; display: block; }
+
+/*  FOOTER  */
+footer {
+  background: #000000;
+  border-top: 1px solid var(--border);
+  padding: 60px 52px 36px;
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px;
+}
+.footer-brand .footer-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: 22px; letter-spacing: 0.12em;
+  color: var(--off-white); text-decoration: none; display: block; margin-bottom: 12px;
+}
+.footer-brand .footer-logo span { color: var(--accent); }
+.footer-brand p { font-size: 13px; color: var(--mid-grey); line-height: 1.7; max-width: 240px; }
+footer h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--off-white); margin-bottom: 16px;
+}
+footer a { display: block; color: var(--mid-grey); text-decoration: none; font-size: 13px; margin-bottom: 9px; transition: color 0.2s; }
+footer a:hover { color: var(--accent); }
+.footer-bottom {
+  grid-column: 1/-1; padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { font-size: 12px; color: var(--mid-grey); }
+
+/*  BG VARIANTS  */
+.bg-surface { background: var(--surface); }
+.bg-steel { background: var(--steel); }
+.bg-charcoal { background: var(--charcoal); }
+
+/*  INLINE LABEL  */
+.tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--charcoal);
+  background: var(--accent); padding: 4px 10px; display: inline-block;
 }
 
-.tender-header span{
-  transition:0.3s;
+/*  TABLE  */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent);
+  padding: 12px 16px; border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.data-table td {
+  font-size: 13px; color: var(--mid-grey);
+  padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.data-table tr:hover td { background: rgba(255,255,255,0.04); }
+
+/*  RESPONSIVE  */
+@media (max-width: 1024px) {
+  nav.desktop-nav { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  header { padding: 0 24px; }
+  .page-hero { padding: 64px 24px; }
+  .section { padding: 60px 24px; }
+  .section-sm { padding: 44px 24px; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  footer { grid-template-columns: 1fr 1fr; padding: 48px 24px 28px; }
+}
+@media (max-width: 640px) {
+  footer { grid-template-columns: 1fr; }
+  .form-wrap { padding: 28px 20px; }
 }
 
-.tender-card.open .tender-header span{
-  transform:rotate(180deg);
+</style>
+<style>
+.page-hero {
+  --hero-img: url('https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg');
 }
-
-.tender-extra{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height 0.4s ease;
+.gate-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px; min-height: 520px;
 }
-
-.tender-card.open .tender-extra{
-  max-height:1000px;
-  margin-top:15px;
+.gate-left {
+  background: var(--steel); padding: 64px; display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
 }
-
-.tender-extra p{
-  color:var(--muted);
-  margin:6px 0;
+.gate-left::before {
+  content: ''; position: absolute; bottom: -80px; right: -80px;
+  width: 300px; height: 300px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%;
 }
-
-.contact-link{
-  margin-top:12px;
-  padding-top:10px;
-  border-top:1px solid #1f1f25;
+.gate-right { background: var(--surface2); padding: 64px; }
+.gate-icon { font-size: 56px; margin-bottom: 24px; opacity: 0.7; }
+.gate-left h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 40px; font-weight: 800; text-transform: uppercase;
+  color: var(--off-white); line-height: 1; margin-bottom: 20px;
 }
-.contact-link a{
-  color:var(--accent);
-  text-decoration:underline;
-  font-weight:500;
+.gate-left p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 16px; }
+.access-options { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; }
+.access-option {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+  padding: 16px 20px; display: flex; align-items: flex-start; gap: 14px;
 }
-
-/* PAGINATION */
-#pagination{
-  max-width:1200px;
-  margin:20px auto 60px;
-  text-align:center;
+.opt-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.opt-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px; font-weight: 700; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 4px;
 }
-.page-btn{
-  margin:0 5px;
-  padding:6px 12px;
-  border-radius:4px;
-  border:1px solid var(--muted);
-  background:transparent;
-  color:var(--text);
-  cursor:pointer;
+.opt-desc { font-size: 12px; color: var(--mid-grey); line-height: 1.6; }
+.gate-right h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 26px; font-weight: 800; text-transform: uppercase;
+  color: var(--off-white); margin-bottom: 8px;
 }
-.page-btn.active,
-.page-btn:hover{
-  background:var(--accent);
-  color:#000;
-  border-color:var(--accent);
+.gate-right p.sub { font-size: 14px; color: var(--mid-grey); margin-bottom: 32px; line-height: 1.6; }
+.inline-form { display: flex; flex-direction: column; gap: 0; }
+.inline-form label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-grey); margin-bottom: 6px; }
+.inline-form input,
+.inline-form select,
+.inline-form textarea {
+  width: 100%; padding: 12px 16px; margin-bottom: 16px;
+  background: var(--surface); border: 1px solid rgba(255,255,255,0.12);
+  color: var(--off-white); font-family: 'Inter', sans-serif; font-size: 14px; outline: none;
+  transition: border 0.2s;
 }
-
-/* FOOTER */
-footer{
-  padding:60px;
-  background:#070709;
-  border-top:1px solid #1f1f25;
-  text-align:center;
-  color:var(--muted);
+.inline-form input:focus,
+.inline-form select:focus,
+.inline-form textarea:focus { border-color: var(--accent); }
+.inline-form select option { background: var(--surface); }
+.inline-form textarea { min-height: 90px; resize: vertical; }
+.form-success { display: none; text-align: center; padding: 40px 20px; }
+.form-success h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 800; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.form-success p { font-size: 14px; color: var(--mid-grey); }
+.benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px; }
+.benefit-card { background: var(--surface2); padding: 36px; }
+.benefit-icon { font-size: 28px; margin-bottom: 14px; }
+.benefit-card h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px; font-weight: 800; text-transform: uppercase;
+  color: var(--off-white); margin-bottom: 8px;
 }
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .desktop-nav{display:none;}
-  .hamburger{display:flex;}
-  header img{height:50px;} /* smaller logo on mobile */
+.benefit-card p { font-size: 13px; color: var(--mid-grey); line-height: 1.65; }
+@media (max-width: 1024px) {
+  .gate-layout { grid-template-columns: 1fr; }
+  .gate-left, .gate-right { padding: 40px 28px; }
 }
 </style>
 </head>
-
-<body>
+<body class="page-body">
 
 <header>
-  <img src="logo.png" alt="BALSIRA GROUP Logo">
-
+  <a href="index.html" class="nav-logo">BALSIRA<span>.</span></a>
   <nav class="desktop-nav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="tenders.html">Tenders</a>
-    <a href="suppliers.html">Suppliers</a>
     <a href="products.html">Products</a>
+    <a href="suppliers.html">Suppliers</a>
     <a href="compliance.html">Compliance</a>
-    <a href="market-insights.html">Market Insights</a>
     <a href="projects.html">Projects</a>
     <a href="contact.html">Contact</a>
   </nav>
-
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+  <a href="tenders.html" class="nav-cta">Tender Access</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </header>
-
-<div class="mobile-nav" id="mobileNav">
+<nav class="mobile-nav" id="mobile-nav">
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
-  <a href="tenders.html">Tenders</a>
-  <a href="suppliers.html">Suppliers</a>
   <a href="products.html">Products</a>
+  <a href="suppliers.html">Suppliers</a>
   <a href="compliance.html">Compliance</a>
-  <a href="market-insights.html">Market Insights</a>
   <a href="projects.html">Projects</a>
   <a href="contact.html">Contact</a>
+  <a href="tenders.html">Tender Access</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow">Restricted Area</div>
+    <h1>Tender &amp; Procurement<br>Portal Access</h1>
+    <p>Mining and railway equipment procurement opportunities are available exclusively to registered clients, verified suppliers, and registered partners. Request access below.</p>
+  </div>
 </div>
 
-<div class="hero">
-  <h1>Open Equipment Tenders</h1>
-  <p>Explore tenders issued by BALSIRA GROUP for equipment and supplies in water, energy, mining, construction, and agriculture sectors.</p>
+<!-- GATE -->
+<div class="gate-layout">
+  <div class="gate-left">
+    <div class="gate-icon"></div>
+    <h2>Procurement Listings Are Private</h2>
+    <p>Balsira's tender and procurement opportunities are not listed publicly. Access is granted to verified organisations only.</p>
+    <p>Once approved, registered members can view active mining and railway equipment procurement listings, respond to opportunities, and submit supplier proposals.</p>
+    <div class="access-options">
+      <div class="access-option">
+        <div class="opt-icon"></div>
+        <div><div class="opt-title">Client Portal</div><div class="opt-desc">Institutional buyers and project owners requiring procurement services.</div></div>
+      </div>
+      <div class="access-option">
+        <div class="opt-icon"></div>
+        <div><div class="opt-title">Registered Supplier Area</div><div class="opt-desc">Verified equipment manufacturers and distributors supplying mining and railway products.</div></div>
+      </div>
+      <div class="access-option">
+        <div class="opt-icon"></div>
+        <div><div class="opt-title">Partner Access</div><div class="opt-desc">Strategic distribution and agency partners within Balsira's procurement network.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="gate-right">
+    <div id="formWrap">
+      <h3>Request Portal Access</h3>
+      <p class="sub">Submit your organisation details. Our team will review and respond within 2 business days.</p>
+      <div class="inline-form">
+        <label>Company Name</label>
+        <input type="text" id="company" placeholder="Your company name" required>
+        <label>Contact Person</label>
+        <input type="text" id="contact" placeholder="Full name">
+        <label>Business Email</label>
+        <input type="email" id="email" placeholder="name@company.com" required>
+        <label>Organisation Type</label>
+        <select id="orgtype">
+          <option value="">Select type</option>
+          <option>Equipment Supplier / Manufacturer</option>
+          <option>Distributor / Trader</option>
+          <option>Project Owner / Client</option>
+          <option>Procurement Agent</option>
+          <option>Other</option>
+        </select>
+        <label>Sector Interest</label>
+        <select id="sector">
+          <option value="">Select sector</option>
+          <option>Mining Equipment</option>
+          <option>Railway Engineering</option>
+          <option>Metals Supply</option>
+          <option>All Sectors</option>
+        </select>
+        <label>Brief Description (optional)</label>
+        <textarea id="desc" placeholder="Briefly describe your company and interest..."></textarea>
+        <button class="btn btn-primary" style="width:100%; text-align:center;" onclick="submitRequest()">Submit Access Request</button>
+      </div>
+    </div>
+    <div class="form-success" id="formSuccess">
+      <div style="font-size:44px; margin-bottom:16px;"></div>
+      <h3>Request Received</h3>
+      <p>Thank you. Our team will review your application and respond within 2 business days at the email address provided.</p>
+      <p style="margin-top:12px;">For urgent enquiries, contact <a href="mailto:info@balsira.co.za" style="color:var(--accent);">info@balsira.co.za</a></p>
+    </div>
+  </div>
 </div>
 
-<div id="filterBar">
-  <button class="filter-btn active" data-sector="all">All</button>
-  <button class="filter-btn" data-sector="Water & Sanitation Equipment">Water & Sanitation</button>
-  <button class="filter-btn" data-sector="Energy & Power Systems">Energy & Power</button>
-  <button class="filter-btn" data-sector="Mining & Industrial Supplies">Mining & Industrial</button>
-  <button class="filter-btn" data-sector="Construction Materials">Construction</button>
-  <button class="filter-btn" data-sector="Agriculture & Irrigation">Agriculture & Irrigation</button>
+<!-- BENEFITS -->
+<div class="section bg-charcoal">
+  <div class="section-eyebrow">Why Register</div>
+  <div class="section-title">Portal Member Benefits</div>
+  <p class="section-desc">Registered members gain structured access to Balsira's procurement network and active opportunities.</p>
+  <div class="benefit-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon"></div>
+      <h4>Active Procurement Listings</h4>
+      <p>View current mining and railway equipment procurement opportunities not visible to the public.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon"></div>
+      <h4>Direct Notifications</h4>
+      <p>Receive alerts for new procurement opportunities relevant to your product categories and sectors.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon"></div>
+      <h4>Supplier Network</h4>
+      <p>Access to Balsira's growing network of industrial buyers, distributors, and procurement partners across Africa.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon"></div>
+      <h4>Market Intelligence</h4>
+      <p>Insights into procurement trends, equipment demand forecasts, and market developments in mining and railway sectors.</p>
+    </div>
+  </div>
 </div>
 
-<div id="tenderList"></div>
-<div id="pagination"></div>
+<div style="background: var(--surface); padding: 48px 52px; text-align: center; border-top: 1px solid var(--border);">
+  <p style="font-size:14px; color:var(--mid-grey); margin-bottom: 20px;">Questions about access? Contact our team directly.</p>
+  <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+    <a href="mailto:info@balsira.co.za" class="btn btn-outline">info@balsira.co.za</a>
+    <a href="mailto:sales@balsira.co.za" class="btn btn-primary">sales@balsira.co.za</a>
+  </div>
+</div>
 
 <footer>
-  © 2026 BALSIRA GROUP. All rights reserved.
+  <div class="footer-brand">
+    <a href="index.html" class="footer-logo">BALSIRA<span>.</span></a>
+    <p>Developing industrial procurement in mining and railway engineering solutions across Africa.</p>
+  </div>
+  <div>
+    <h4>Navigation</h4>
+    <a href="about.html">About Us</a>
+    <a href="products.html">Products</a>
+    <a href="suppliers.html">Suppliers</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <a href="mailto:sales@balsira.co.za">sales@balsira.co.za</a>
+    <a href="mailto:info@balsira.co.za">info@balsira.co.za</a>
+    <a href="mailto:brilliant@balsira.co.za">brilliant@balsira.co.za</a>
+  </div>
+  <div>
+    <h4>Legal</h4>
+    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="anti-corruption.html">Anti-Corruption Policy</a>
+    <a href="compliance.html">Compliance</a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 BALSIRA GROUP. All rights reserved.</p>
+    <p>Johannesburg, South Africa</p>
+  </div>
 </footer>
 
 <script>
-// --- MOBILE MENU ---
-function toggleMenu(){
-  const nav = document.getElementById('mobileNav');
-  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-}
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => mobileNav.classList.toggle('show'));
 
-// --- TENDERS SCRIPT ---
-const tenders = [];
-const sectors = [
-  "Water & Sanitation Equipment",
-  "Energy & Power Systems",
-  "Mining & Industrial Supplies",
-  "Construction Materials",
-  "Agriculture & Irrigation"
-];
-const tenderTitles = [
-  "Supply of Industrial Water Pumps and Valves",
-  "Procurement of HDPE Piping Systems",
-  "Installation and Commissioning of Water Treatment Plant",
-  "Supply of Storage Tanks",
-  "Procurement of Generators and Backup Energy Systems",
-  "Supply of Transformers and Solar Inverters",
-  "Electrical Cabling and Accessories",
-  "Purchase of Mining PPE and Safety Gear",
-  "Procurement of Industrial Tools and Mechanical Components",
-  "Structural Steel Supply for Civil Works",
-  "Cement and Aggregates for Road Construction",
-  "Formwork Systems for Building Projects",
-  "Irrigation Pumps and Systems for Agriculture",
-  "Storage Solutions for Farming Infrastructure"
-];
-const types = ["Government", "Private"];
-const locations = [
-  "Johannesburg, South Africa",
-  "Pretoria, South Africa",
-  "Cape Town, South Africa",
-  "Durban, South Africa",
-  "Port Elizabeth, South Africa",
-  "Gaborone, Botswana",
-  "Windhoek, Namibia",
-  "Lusaka, Zambia",
-  "Nairobi, Kenya",
-  "Accra, Ghana"
-];
-const descriptions = [
-  "This tender covers supply, installation, and maintenance of equipment, ensuring compliance with industry standards and quality assurance.",
-  "The project requires experienced contractors with proven capabilities in delivering similar equipment and operational support.",
-  "Successful bidders will be responsible for delivery, installation, commissioning, and providing ongoing technical support.",
-  "Bidders must ensure adherence to safety regulations, environmental compliance, and provide documentation for all delivered equipment.",
-  "The scope includes supply, logistics, installation, testing, and after-sales support as required by the project specifications."
-];
-
-// Generate 100 tenders
-for(let i=0;i<100;i++){
-  let sector = sectors[i % sectors.length];
-  let title = tenderTitles[i % tenderTitles.length];
-  let description = descriptions[i % descriptions.length];
-  let country = locations[i % locations.length];
-  let tenderType = types[i % types.length];
-  
-  let minBudget = Math.floor(Math.random()*50+10)*1000; 
-  let maxBudget = minBudget + Math.floor(Math.random()*100+50)*1000; 
-  let budget = `USD ${minBudget.toLocaleString()} – USD ${maxBudget.toLocaleString()}`;
-
-  let daysAhead = Math.floor(Math.random()*30)+2;
-  let closingDate = new Date();
-  closingDate.setDate(closingDate.getDate() + daysAhead);
-  let closing = closingDate.toISOString().split('T')[0];
-
-  let tenderNumber = `SCMP 29/08/02R-${String(i+1).padStart(3,'0')}`;
-  let specialConditions = "Bidders must purchase equipment from BALSIRA; full product catalog available in Products page.";
-
-  tenders.push({
-    title, description, sector, type: tenderType, closing, daysRemaining: daysAhead,
-    location: country, budget, eligibility: "Company registration, Tax compliance, ISO certification, Minimum 3 years project experience",
-    contact: "tenders@balsiragroup.africa", tenderNumber, specialConditions
-  });
-}
-
-// Pagination
-let currentPage = 1;
-const itemsPerPage = 20;
-
-function displayPage(page=1, filter="all"){
-  currentPage = page;
-  const filtered = tenders.filter(t => filter==="all" || t.sector===filter);
-  const start = (page-1)*itemsPerPage;
-  const end = start + itemsPerPage;
-  const pageItems = filtered.slice(start,end);
-  const list = document.getElementById("tenderList");
-  list.innerHTML = pageItems.map(t => `
-    <div class="tender-card">
-      <div class="tender-header" onclick="this.parentElement.classList.toggle('open')">
-        <h3>${t.title}</h3>
-        <span>▼</span>
-      </div>
-      <p>${t.description}</p>
-      <p><strong>Closing Date:</strong> ${new Date(t.closing).toLocaleDateString('en-GB')}</p>
-      <p><strong>Days Remaining:</strong> in ${t.daysRemaining} days</p>
-      <div class="tender-extra">
-        <p><strong>Tender Number:</strong> ${t.tenderNumber}</p>
-        <p><strong>Sector:</strong> ${t.sector}</p>
-        <p><strong>Type:</strong> ${t.type}</p>
-        <p><strong>Project Location:</strong> ${t.location}</p>
-        <p><strong>Estimated Budget:</strong> ${t.budget}</p>
-        <p><strong>Eligibility:</strong> ${t.eligibility}</p>
-        <p><strong>Special Conditions:</strong> ${t.specialConditions}</p>
-        <p><strong>Contact:</strong> ${t.contact}</p>
-        <div class="contact-link">
-          <a href="contact.html">Contact for Quote</a><br>
-          <a href="products.html">View Products</a>
-        </div>
-      </div>
-    </div>
-  `).join("");
-
-  renderPagination(filtered.length, page);
-}
-
-// Pagination buttons
-function renderPagination(totalItems, page){
-  const totalPages = Math.ceil(totalItems/itemsPerPage);
-  const container = document.getElementById("pagination");
-  let html = `<button class="page-btn" onclick="displayPage(1)">First</button>`;
-  for(let i=1;i<=totalPages;i++){
-    if(i<=3 || i>totalPages-2 || (i>=page-1 && i<=page+1)){
-      html += `<button class="page-btn ${i===page?'active':''}" onclick="displayPage(${i})">${i}</button>`;
-    } else if(i===4 && page>5){
-      html += `…`;
-    } else if(i===totalPages-3 && page<totalPages-4){
-      html += `…`;
-    }
+  function submitRequest() {
+    const email = document.getElementById('email').value;
+    const company = document.getElementById('company').value;
+    if (!email || !company) { alert('Please provide at least your company name and email.'); return; }
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
   }
-  html += `<button class="page-btn" onclick="displayPage(${totalPages})">Last</button>`;
-  container.innerHTML = html;
-}
-
-// Filter
-document.querySelectorAll(".filter-btn").forEach(btn=>{
-  btn.onclick=()=>{
-    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    displayPage(1, btn.dataset.sector);
-  };
-});
-
-displayPage(); // initial load
 </script>
-
 </body>
 </html>
