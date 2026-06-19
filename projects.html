@@ -3,405 +3,512 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects & Case Studies | BALSIRA</title>
-<link rel="icon" href="logo.png" type="image/png">
-
+<title>Projects | BALSIRA GROUP</title>
+<link rel="icon" type="image/png" href="logo.png">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
 :root {
-  --bg:#0b0b0d;
-  --panel:#121217;
-  --accent:#c9a24d;
-  --text:#eaeaea;
-  --muted:#9a9a9a;
-}
-*{box-sizing:border-box;}
-body{
-  margin:0;
-  font-family:'Inter','Segoe UI',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
+  --charcoal: #000000;
+  --steel: #111111;
+  --accent: #FFFFFF;
+  --accent-hover: #CCCCCC;
+  --off-white: #FFFFFF;
+  --mid-grey: #888888;
+  --light-grey: #CCCCCC;
+  --surface: #111111;
+  --surface2: #1A1A1A;
+  --border: rgba(255,255,255,0.15);
 }
 
-/* HEADER */
-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:20px 60px;
-  background: linear-gradient(180deg,#0b0b0d,#0e0e12);
-  border-bottom:1px solid #1f1f25;
-}
-header img{height:60px;}
-
-/* DESKTOP NAV */
-nav{
-  display:flex;
-  align-items:center;
-}
-nav a{
-  margin-left:28px;
-  color:var(--muted);
-  text-decoration:none;
-  font-weight:500;
-}
-nav a:hover{color:var(--text);}
-
-/* HAMBURGER */
-.hamburger{
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-}
-.hamburger span{
-  width:26px;
-  height:3px;
-  background:var(--text);
-  margin:4px 0;
-  transition:0.3s;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: var(--charcoal);
+  color: var(--off-white);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* MOBILE MENU */
-.mobile-nav{
-  display:none;
-  flex-direction:column;
-  background:#0e0e12;
-  border-bottom:1px solid #1f1f25;
+/*  NAV  */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 52px; height: 66px;
+  background: rgba(0,0,0,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
 }
-.mobile-nav a{
-  padding:16px 24px;
-  border-top:1px solid #1f1f25;
-  color:var(--muted);
-  text-decoration:none;
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: 22px; letter-spacing: 0.12em;
+  color: var(--off-white); text-decoration: none;
 }
-.mobile-nav a:hover{color:var(--text);}
+.nav-logo span { color: var(--accent); }
+nav.desktop-nav { display: flex; align-items: center; gap: 28px; }
+nav.desktop-nav a {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mid-grey); text-decoration: none;
+  transition: color 0.2s;
+}
+nav.desktop-nav a:hover, nav.desktop-nav a.active { color: var(--accent); }
+.nav-cta {
+  background: var(--accent); color: var(--charcoal);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 9px 22px;
+  text-decoration: none; transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--accent-hover); }
 
-/* HERO */
-.hero{
-  padding:120px 60px;
-  text-align:center;
-  max-width:1200px;
-  margin:auto;
-  background: url('https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600') center/cover no-repeat;
-  border-radius:12px;
-  color:#fff;
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; height: 2px; width: 24px; background: var(--off-white); transition: 0.3s; }
+nav.mobile-nav {
+  display: none; flex-direction: column;
+  position: fixed; top: 66px; left: 0; right: 0;
+  background: #000000; border-bottom: 1px solid var(--border);
+  z-index: 199; padding: 8px 0;
 }
-.hero h1{
-  font-size:3rem;
-  margin-bottom:20px;
-  text-shadow:1px 1px 5px rgba(0,0,0,0.7);
+nav.mobile-nav.show { display: flex; }
+nav.mobile-nav a {
+  padding: 13px 28px; color: var(--mid-grey); text-decoration: none;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: color 0.2s, background 0.2s;
 }
-.hero p{
-  color:#f0f0f0;
-  max-width:800px;
-  margin:auto;
-  text-shadow:1px 1px 5px rgba(0,0,0,0.5);
-}
+nav.mobile-nav a:hover { color: var(--accent); background: rgba(255,255,255,0.05); }
 
-/* CASE STUDIES */
-section{
-  max-width:1200px;
-  margin:auto;
-  padding:60px;
-}
-.case-study{
-  background:var(--panel);
-  border:1px solid #1f1f25;
-  border-radius:12px;
-  padding:20px 40px 40px 40px;
-  margin-bottom:40px;
-}
-.case-study h2{
-  margin-top:0;
-  color:var(--accent);
-}
-.meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
-  margin-bottom:20px;
-  color:var(--muted);
-  font-size:0.95rem;
-}
-.meta span{
-  background:#0b0b0d;
-  padding:6px 12px;
-  border-radius:20px;
-  border:1px solid #1f1f25;
-}
-.case-study p{color:var(--muted);}
+/*  PAGE TOP OFFSET  */
+.page-body { padding-top: 66px; }
 
-/* CLICKABLE AREA */
-.clickable-area{
-  display:flex;
-  justify-content: space-between;
-  align-items:center;
-  cursor:pointer;
+/*  HERO BANNER (inner pages)  */
+.page-hero {
+  background: linear-gradient(105deg, rgba(0,0,0,0.96) 50%, rgba(20,20,20,0.85) 100%),
+              var(--hero-img, url('https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg')) center/cover no-repeat;
+  padding: 80px 52px 72px;
+  border-bottom: 1px solid var(--border);
 }
-.arrow{
-  font-size:1.5rem;
-  color: var(--accent);
-  transition: transform 0.3s ease;
+.page-hero-inner { max-width: 860px; }
+.eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--accent);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
 }
-.case-study.open .arrow{
-  transform: rotate(180deg);
+.eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--accent); }
+.page-hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 5vw, 68px); font-weight: 800;
+  text-transform: uppercase; line-height: 0.95;
+  color: var(--off-white); margin-bottom: 20px;
 }
-.clickable-area:hover .arrow{
-  color:#eaeaea;
-}
-.more-info{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height 0.6s ease;
-  margin-top:15px;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-.more-info p{
-  margin-bottom:10px;
+.page-hero p {
+  font-size: 15px; color: var(--mid-grey); max-width: 560px; line-height: 1.75;
 }
 
-/* FOOTER */
-footer{
-  padding:60px;
-  background:#070709;
-  border-top:1px solid #1f1f25;
-  display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-  gap:40px;
+/*  SECTION  */
+.section { padding: 80px 52px; max-width: 1280px; margin: 0 auto; }
+.section-sm { padding: 60px 52px; max-width: 1280px; margin: 0 auto; }
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(28px, 3vw, 44px); font-weight: 800;
+  text-transform: uppercase; color: var(--off-white);
+  margin-bottom: 16px; line-height: 1;
 }
-footer h4{margin-bottom:12px;}
-footer a{
-  display:block;
-  color:var(--muted);
-  text-decoration:none;
-  margin-bottom:8px;
+.section-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
 }
-footer a:hover{color:var(--text);}
-.copyright{
-  grid-column:1/-1;
-  color:var(--muted);
-  font-size:0.9rem;
-  text-align:center;
-  margin-top:20px;
+.section-desc {
+  font-size: 15px; color: var(--mid-grey); max-width: 600px;
+  line-height: 1.75; margin-bottom: 48px;
+}
+.divider { width: 44px; height: 3px; background: var(--accent); margin: 16px 0 32px; }
+
+/*  GRID  */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; }
+
+/*  CARD  */
+.card {
+  background: var(--surface2); padding: 36px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px; font-weight: 800; text-transform: uppercase;
+  color: var(--off-white); margin-bottom: 10px;
+}
+.card p { font-size: 14px; color: var(--mid-grey); line-height: 1.7; }
+
+/*  PRODUCT CARD  */
+.product-card {
+  background: var(--surface); overflow: hidden;
+  transition: transform 0.25s; text-decoration: none; color: inherit;
+  display: block;
+}
+.product-card:hover { transform: translateY(-3px); }
+.product-card img { width: 100%; height: 200px; object-fit: cover; display: block; filter: brightness(0.85); }
+.product-card-content { padding: 28px; }
+.product-card-content h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 19px; font-weight: 800; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 8px;
+}
+.product-card-content p { font-size: 13px; color: var(--mid-grey); line-height: 1.65; }
+.product-card-content ul {
+  margin-top: 12px; padding-left: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.product-card-content li {
+  font-size: 12px; color: var(--light-grey); padding-left: 16px; position: relative;
+}
+.product-card-content li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 10px; }
+
+/*  BUTTONS  */
+.btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 13px; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 13px 30px;
+  text-decoration: none; display: inline-block; transition: all 0.2s;
+}
+.btn-primary { background: var(--accent); color: var(--charcoal); }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-outline { border: 1px solid rgba(255,255,255,0.3); color: var(--off-white); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+/*  FORM  */
+.form-wrap {
+  max-width: 640px; margin: 0 auto;
+  background: var(--surface); padding: 44px;
+  border: 1px solid var(--border);
+}
+.form-wrap input,
+.form-wrap select,
+.form-wrap textarea {
+  width: 100%; padding: 12px 16px;
+  background: var(--surface2); border: 1px solid rgba(255,255,255,0.12);
+  color: var(--off-white); font-family: 'Inter', sans-serif; font-size: 14px;
+  outline: none; transition: border 0.2s; margin-bottom: 16px; display: block;
+}
+.form-wrap input:focus,
+.form-wrap select:focus,
+.form-wrap textarea:focus { border-color: var(--accent); }
+.form-wrap select option { background: var(--surface2); }
+.form-wrap textarea { resize: vertical; min-height: 120px; }
+.form-wrap label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mid-grey); display: block; margin-bottom: 6px;
+}
+.form-message {
+  font-size: 13px; padding: 10px; text-align: center; margin-top: 8px;
+  display: none;
+}
+.form-message.success { background: rgba(74,183,74,0.15); color: #6fcf6f; display: block; }
+.form-message.error { background: rgba(255,76,76,0.15); color: #ff8080; display: block; }
+
+/*  FOOTER  */
+footer {
+  background: #000000;
+  border-top: 1px solid var(--border);
+  padding: 60px 52px 36px;
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px;
+}
+.footer-brand .footer-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: 22px; letter-spacing: 0.12em;
+  color: var(--off-white); text-decoration: none; display: block; margin-bottom: 12px;
+}
+.footer-brand .footer-logo span { color: var(--accent); }
+.footer-brand p { font-size: 13px; color: var(--mid-grey); line-height: 1.7; max-width: 240px; }
+footer h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--off-white); margin-bottom: 16px;
+}
+footer a { display: block; color: var(--mid-grey); text-decoration: none; font-size: 13px; margin-bottom: 9px; transition: color 0.2s; }
+footer a:hover { color: var(--accent); }
+.footer-bottom {
+  grid-column: 1/-1; padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { font-size: 12px; color: var(--mid-grey); }
+
+/*  BG VARIANTS  */
+.bg-surface { background: var(--surface); }
+.bg-steel { background: var(--steel); }
+.bg-charcoal { background: var(--charcoal); }
+
+/*  INLINE LABEL  */
+.tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--charcoal);
+  background: var(--accent); padding: 4px 10px; display: inline-block;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px){
-  header{
-    padding:20px 24px;
-  }
-  nav{
-    display:none;
-  }
-  .hamburger{
-    display:flex;
-  }
-  section{
-    padding:40px 24px;
-  }
-  .hero{
-    padding:80px 24px;
-  }
-  header img { height:50px; }
+/*  TABLE  */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent);
+  padding: 12px 16px; border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.data-table td {
+  font-size: 13px; color: var(--mid-grey);
+  padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.data-table tr:hover td { background: rgba(255,255,255,0.04); }
+
+/*  RESPONSIVE  */
+@media (max-width: 1024px) {
+  nav.desktop-nav { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  header { padding: 0 24px; }
+  .page-hero { padding: 64px 24px; }
+  .section { padding: 60px 24px; }
+  .section-sm { padding: 44px 24px; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  footer { grid-template-columns: 1fr 1fr; padding: 48px 24px 28px; }
+}
+@media (max-width: 640px) {
+  footer { grid-template-columns: 1fr; }
+  .form-wrap { padding: 28px 20px; }
+}
+
+</style>
+<style>
+.page-hero { --hero-img: url('https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg'); }
+.project-card { background:var(--surface2); border-bottom:1px solid var(--border); margin-bottom:2px; }
+.project-header { display:flex; justify-content:space-between; align-items:center; padding:32px 40px; cursor:pointer; gap:24px; }
+.project-header:hover { background:rgba(255,255,255,0.04); }
+.project-left { flex:1; }
+.project-tag-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+.ptag { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--charcoal); background:var(--accent); padding:3px 10px; }
+.project-header h2 { font-family:'Barlow Condensed',sans-serif; font-size:24px; font-weight:800; text-transform:uppercase; color:var(--off-white); line-height:1.1; }
+.project-toggle { font-size:18px; color:var(--accent); transition:transform 0.3s; flex-shrink:0; }
+.project-card.open .project-toggle { transform:rotate(180deg); }
+.project-body { max-height:0; overflow:hidden; transition:max-height 0.5s ease; }
+.project-body-inner { padding:0 40px 40px; display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+.project-body-inner p { font-size:14px; color:var(--mid-grey); line-height:1.75; }
+.project-meta { display:flex; flex-direction:column; gap:12px; }
+.meta-row { display:flex; gap:16px; }
+.meta-label { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); min-width:100px; }
+.meta-value { font-size:13px; color:var(--light-grey); }
+.project-card.open .project-body { max-height:600px; }
+.cta-band { background:var(--steel); padding:64px 52px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:32px; }
+.cta-band h2 { font-family:'Barlow Condensed',sans-serif; font-size:36px; font-weight:800; text-transform:uppercase; color:var(--off-white); }
+.cta-band p { font-size:15px; color:rgba(255,255,255,0.65); margin-top:8px; max-width:520px; }
+@media (max-width:1024px) {
+  .project-header { padding:24px; }
+  .project-body-inner { grid-template-columns:1fr; padding:0 24px 32px; }
+  .cta-band { padding:44px 24px; }
 }
 </style>
 </head>
-
-<body>
+<body class="page-body">
 
 <header>
-  <img src="logo.png" alt="BALSIRA GROUP Logo">
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="tenders.html">Tenders</a>
-    <a href="suppliers.html">Suppliers</a>
-    <a href="products.html">Products</a>
+  <a href="index.html" class="nav-logo">BALSIRA<span>.</span></a>
+  <nav class="desktop-nav">
+    <a href="index.html">Home</a><a href="about.html">About</a>
+    <a href="products.html">Products</a><a href="suppliers.html">Suppliers</a>
     <a href="compliance.html">Compliance</a>
-    <a href="market-insights.html">Market Insights</a>
-    <a href="projects.html">Projects</a>
+    <a href="projects.html" class="active">Projects</a>
     <a href="contact.html">Contact</a>
   </nav>
-
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+  <a href="tenders.html" class="nav-cta">Tender Access</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </header>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="products.html">Products</a><a href="suppliers.html">Suppliers</a>
+  <a href="compliance.html">Compliance</a><a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a><a href="tenders.html">Tender Access</a>
+</nav>
 
-<div class="mobile-nav" id="mobileNav">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="tenders.html">Tenders</a>
-  <a href="suppliers.html">Suppliers</a>
-  <a href="products.html">Products</a>
-  <a href="compliance.html">Compliance</a>
-  <a href="market-insights.html">Market Insights</a>
-  <a href="projects.html">Projects</a>
-  <a href="contact.html">Contact</a>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow">Case Studies</div>
+    <h1>Projects &amp;<br>Procurement Work</h1>
+    <p>A selection of infrastructure, mining, and engineering procurement projects supported by BALSIRA GROUP across Southern and East Africa.</p>
+  </div>
 </div>
 
-<div class="hero">
-  <h1>Projects & Case Studies</h1>
-  <p>
-    A selection of infrastructure, environmental, and engineering projects
-    successfully delivered by BALSIRA GROUP.
-  </p>
+<div class="section">
+  <div class="section-eyebrow">Project Portfolio</div>
+  <div class="section-title">Selected Projects</div>
+  <p class="section-desc">Click any project to view full details, scope, and outcomes.</p>
+
+  <!-- PROJECT 1 -->
+  <div class="project-card" id="p1">
+    <div class="project-header" onclick="toggleProject('p1')">
+      <div class="project-left">
+        <div class="project-tag-row"><span class="ptag">Mining Equipment</span><span class="ptag">Southern Africa</span></div>
+        <h2>Mining Equipment Procurement — Zambia Copper Belt</h2>
+      </div>
+      <div class="project-toggle"></div>
+    </div>
+    <div class="project-body">
+      <div class="project-body-inner">
+        <div>
+          <p>Balsira facilitated procurement of heavy earthmoving and processing equipment for a copper mining operation in Zambia's Copperbelt Province. The scope included sourcing excavators, conveyors, and crushing equipment from verified suppliers.</p>
+          <p style="margin-top:14px;">Cross-border logistics coordination from South Africa into Zambia was managed end-to-end, with compliance documentation handled by the Balsira team.</p>
+        </div>
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-label">Sector</span><span class="meta-value">Mining Equipment</span></div>
+          <div class="meta-row"><span class="meta-label">Location</span><span class="meta-value">Copperbelt Province, Zambia</span></div>
+          <div class="meta-row"><span class="meta-label">Scope</span><span class="meta-value">Equipment sourcing, supplier qualification, logistics coordination</span></div>
+          <div class="meta-row"><span class="meta-label">Equipment</span><span class="meta-value">Excavators, conveyor systems, crushing &amp; screening plant</span></div>
+          <div class="meta-row"><span class="meta-label">Status</span><span class="meta-value">Completed</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 2 -->
+  <div class="project-card" id="p2">
+    <div class="project-header" onclick="toggleProject('p2')">
+      <div class="project-left">
+        <div class="project-tag-row"><span class="ptag">Railway Engineering</span><span class="ptag">East Africa</span></div>
+        <h2>Railway Track Components Supply — Tanzania</h2>
+      </div>
+      <div class="project-toggle"></div>
+    </div>
+    <div class="project-body">
+      <div class="project-body-inner">
+        <div>
+          <p>Balsira supported procurement of railway track components for an infrastructure upgrade project in Tanzania. This included sourcing rail sections, concrete sleepers, fastening systems, and fishplates from qualified international suppliers.</p>
+          <p style="margin-top:14px;">The project leveraged Balsira's East Africa market access and supplier network to meet TBS compliance requirements and project timelines.</p>
+        </div>
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-label">Sector</span><span class="meta-value">Railway Engineering</span></div>
+          <div class="meta-row"><span class="meta-label">Location</span><span class="meta-value">Tanzania</span></div>
+          <div class="meta-row"><span class="meta-label">Scope</span><span class="meta-value">Track component sourcing, TBS compliance, supplier coordination</span></div>
+          <div class="meta-row"><span class="meta-label">Equipment</span><span class="meta-value">Rail, sleepers, fasteners, fishplates</span></div>
+          <div class="meta-row"><span class="meta-label">Status</span><span class="meta-value">Completed</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 3 -->
+  <div class="project-card" id="p3">
+    <div class="project-header" onclick="toggleProject('p3')">
+      <div class="project-left">
+        <div class="project-tag-row"><span class="ptag">Industrial Procurement</span><span class="ptag">South Africa</span></div>
+        <h2>Industrial Pumps &amp; Valves — Mining Operation, Limpopo</h2>
+      </div>
+      <div class="project-toggle"></div>
+    </div>
+    <div class="project-body">
+      <div class="project-body-inner">
+        <div>
+          <p>Multi-phase procurement of industrial pumping systems and process valves for a platinum mining operation in Limpopo, South Africa. Balsira identified and qualified three competing suppliers before recommending and placing the order.</p>
+          <p style="margin-top:14px;">The agency model allowed the client to benefit from Balsira's supplier relationships and volume negotiations without managing the procurement process internally.</p>
+        </div>
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-label">Sector</span><span class="meta-value">Mining Equipment</span></div>
+          <div class="meta-row"><span class="meta-label">Location</span><span class="meta-value">Limpopo, South Africa</span></div>
+          <div class="meta-row"><span class="meta-label">Scope</span><span class="meta-value">Supplier sourcing, competitive quotation, order placement</span></div>
+          <div class="meta-row"><span class="meta-label">Equipment</span><span class="meta-value">Slurry pumps, dewatering pumps, process valves</span></div>
+          <div class="meta-row"><span class="meta-label">Status</span><span class="meta-value">Completed</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 4 -->
+  <div class="project-card" id="p4">
+    <div class="project-header" onclick="toggleProject('p4')">
+      <div class="project-left">
+        <div class="project-tag-row"><span class="ptag">Metals Supply</span><span class="ptag">Cross-Border</span></div>
+        <h2>Structural Steel Cross-Border Supply — Mozambique</h2>
+      </div>
+      <div class="project-toggle"></div>
+    </div>
+    <div class="project-body">
+      <div class="project-body-inner">
+        <div>
+          <p>Balsira coordinated cross-border structural steel supply from South African mills to a large infrastructure project in Mozambique. The scope covered procurement, export documentation, and logistics to site.</p>
+          <p style="margin-top:14px;">The project demonstrated Balsira's ability to manage cross-border supply chain complexity across the SADC region with full compliance documentation.</p>
+        </div>
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-label">Sector</span><span class="meta-value">Metals Supply</span></div>
+          <div class="meta-row"><span class="meta-label">Location</span><span class="meta-value">Mozambique / South Africa</span></div>
+          <div class="meta-row"><span class="meta-label">Scope</span><span class="meta-value">Steel sourcing, export documentation, logistics management</span></div>
+          <div class="meta-row"><span class="meta-label">Materials</span><span class="meta-value">Structural steel beams, columns, reinforcing bar</span></div>
+          <div class="meta-row"><span class="meta-label">Status</span><span class="meta-value">Completed</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 5 -->
+  <div class="project-card" id="p5">
+    <div class="project-header" onclick="toggleProject('p5')">
+      <div class="project-left">
+        <div class="project-tag-row"><span class="ptag">Railway Engineering</span><span class="ptag">Ongoing</span></div>
+        <h2>Locomotive Spares Supply Programme — East Africa</h2>
+      </div>
+      <div class="project-toggle"></div>
+    </div>
+    <div class="project-body">
+      <div class="project-body-inner">
+        <div>
+          <p>Ongoing locomotive component and spare parts sourcing programme supporting a rail operator in East Africa. Balsira maintains an active supplier database and manages rolling procurement of critical spare parts to minimise fleet downtime.</p>
+          <p style="margin-top:14px;">This is an example of Balsira's supplier-to-customer bridge model in action — providing consistent access to parts without the client managing individual supplier relationships.</p>
+        </div>
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-label">Sector</span><span class="meta-value">Railway Engineering</span></div>
+          <div class="meta-row"><span class="meta-label">Location</span><span class="meta-value">East Africa</span></div>
+          <div class="meta-row"><span class="meta-label">Scope</span><span class="meta-value">Ongoing spare parts procurement and supplier management</span></div>
+          <div class="meta-row"><span class="meta-label">Components</span><span class="meta-value">Bogies, braking systems, traction components, couplings</span></div>
+          <div class="meta-row"><span class="meta-label">Status</span><span class="meta-value">Ongoing</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<section>
-
-  <!-- Project 1 -->
-  <div class="case-study">
-    <div class="clickable-area">
-      <h2>Lesotho Lowlands Water Development Project – Phase II</h2>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="meta">
-      <span>Water Infrastructure</span>
-      <span>Southern Africa</span>
-      <span>Bulk Water Supply</span>
-    </div>
-    <p>
-      BALSIRA GROUP supported a national water infrastructure programme
-      delivering intake works, treatment facilities, pipelines, and
-      distribution systems to expanding urban centres.
-    </p>
-    <div class="more-info">
-      <p><strong>Client:</strong> Government of Lesotho</p>
-      <p><strong>Duration:</strong> Jan 2021 – Dec 2023</p>
-      <p><strong>Challenges:</strong> Remote terrain, water scarcity, coordination with multiple contractors, seasonal flooding.</p>
-      <p><strong>Solutions:</strong> Modular treatment plants, optimized pipeline routing, on-site supervision, advanced water flow monitoring.</p>
-      <p><strong>Technologies/Equipment:</strong> SCADA systems, submersible pumps, filtration units, pressure sensors.</p>
-      <p><strong>Stakeholders:</strong> Government agencies, local municipalities, civil contractors.</p>
-      <p><strong>Budget:</strong> $45M</p>
-      <p><strong>Environmental & Social Impact:</strong> Improved water access for 250,000 residents, reduced contamination risk, sustainable groundwater management.</p>
-      <p><strong>Key Achievements:</strong> 150 km new pipelines, 3 upgraded treatment facilities, project completed 2 months ahead of schedule.</p>
-      <p><strong>Lessons Learned:</strong> Early stakeholder engagement and real-time monitoring is critical for large-scale water infrastructure projects.</p>
-    </div>
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div>
+    <h2>Have a Procurement Requirement?</h2>
+    <p>Tell us what mining or railway equipment you need and we'll match you with verified suppliers from our network.</p>
   </div>
-
-  <!-- Project 2 -->
-  <div class="case-study">
-    <div class="clickable-area">
-      <h2>Environmental Flow & Water Quality Assessment</h2>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="meta">
-      <span>Environmental Services</span>
-      <span>Water Resources</span>
-      <span>Impact Assessment</span>
-    </div>
-    <p>
-      The project focused on environmental flow modelling, water quality
-      analysis, and sustainable abstraction planning to protect river systems.
-    </p>
-    <div class="more-info">
-      <p><strong>Client:</strong> Regional Water Authority</p>
-      <p><strong>Duration:</strong> Mar 2022 – Nov 2022</p>
-      <p><strong>Challenges:</strong> Maintaining ecological flow while meeting agricultural and municipal demands, seasonal variations in water levels.</p>
-      <p><strong>Solutions:</strong> Real-time river monitoring, predictive modeling, stakeholder workshops, sustainable abstraction plans.</p>
-      <p><strong>Technologies/Equipment:</strong> Flow meters, water quality sensors, GIS mapping, modeling software.</p>
-      <p><strong>Stakeholders:</strong> Local farmers, environmental NGOs, municipal water departments.</p>
-      <p><strong>Budget:</strong> $1.2M</p>
-      <p><strong>Environmental & Social Impact:</strong> Protection of biodiversity, improved community water management, long-term river sustainability.</p>
-      <p><strong>Key Achievements:</strong> Completed comprehensive assessment report, established early warning system for water quality issues, recommended flow adjustments for agriculture.</p>
-      <p><strong>Lessons Learned:</strong> Collaborative stakeholder engagement ensures sustainability and acceptance of environmental plans.</p>
-    </div>
+  <div style="display:flex; gap:14px; flex-wrap:wrap;">
+    <a href="contact.html" class="btn btn-primary">Discuss Your Project</a>
+    <a href="suppliers.html" class="btn btn-outline">Register as Supplier</a>
   </div>
-
-  <!-- Project 3 -->
-  <div class="case-study">
-    <div class="clickable-area">
-      <h2>Multi-Phase Water Infrastructure Planning</h2>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="meta">
-      <span>Infrastructure</span>
-      <span>Planning & Supervision</span>
-    </div>
-    <p>
-      BALSIRA GROUP provided procurement support, tender documentation,
-      contractor evaluation, and construction supervision for regional
-      water systems.
-    </p>
-    <div class="more-info">
-      <p><strong>Client:</strong> Multiple Municipalities</p>
-      <p><strong>Duration:</strong> Apr 2021 – Ongoing</p>
-      <p><strong>Challenges:</strong> Coordinating multiple projects across regions, variable local regulations, budget constraints.</p>
-      <p><strong>Solutions:</strong> Phased project planning, contractor prequalification, regular site inspections, progress monitoring.</p>
-      <p><strong>Technologies/Equipment:</strong> Project management software, pipeline design tools, supervision drones.</p>
-      <p><strong>Stakeholders:</strong> Municipal councils, contractors, local communities.</p>
-      <p><strong>Budget:</strong> $20M+</p>
-      <p><strong>Environmental & Social Impact:</strong> Improved regional water access, enhanced planning capacity, reduced project delays.</p>
-      <p><strong>Key Achievements:</strong> Streamlined procurement, multiple regional systems improved, optimized project supervision.</p>
-      <p><strong>Lessons Learned:</strong> Centralized coordination with local authorities reduces delays and enhances compliance.</p>
-    </div>
-  </div>
-
-</section>
+</div>
 
 <footer>
-  <div>
-    <h4>BALSIRA GROUP</h4>
-    <a href="about.html">About Us</a>
-    <a href="careers.html">Careers</a>
-    <a href="news.html">News</a>
+  <div class="footer-brand">
+    <a href="index.html" class="footer-logo">BALSIRA<span>.</span></a>
+    <p>Developing industrial procurement in mining and railway engineering solutions across Africa.</p>
   </div>
-  <div>
-    <h4>Suppliers</h4>
-    <a href="suppliers.html">Register</a>
-    <a href="membership.html">Membership</a>
-    <a href="compliance.html">Compliance</a>
-  </div>
-  <div>
-    <h4>Legal</h4>
-    <a href="terms.html">Terms & Conditions</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="anti-corruption.html">Anti-Corruption Policy</a>
-  </div>
-  <div class="copyright">
-    © 2026 BALSIRA GROUP. All rights reserved.
-  </div>
+  <div><h4>Navigation</h4><a href="about.html">About Us</a><a href="products.html">Products</a><a href="suppliers.html">Suppliers</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a></div>
+  <div><h4>Contact</h4><a href="mailto:sales@balsira.co.za">sales@balsira.co.za</a><a href="mailto:info@balsira.co.za">info@balsira.co.za</a><a href="mailto:brilliant@balsira.co.za">brilliant@balsira.co.za</a></div>
+  <div><h4>Legal</h4><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a><a href="anti-corruption.html">Anti-Corruption Policy</a><a href="compliance.html">Compliance</a></div>
+  <div class="footer-bottom"><p>© 2026 BALSIRA GROUP. All rights reserved.</p><p>Johannesburg, South Africa</p></div>
 </footer>
 
 <script>
-function toggleMenu(){
-  const menu = document.getElementById('mobileNav');
-  menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-}
-
-// Expand/Collapse case studies
-const cards = document.querySelectorAll('.case-study');
-
-cards.forEach(card => {
-  const area = card.querySelector('.clickable-area');
-  const moreInfo = card.querySelector('.more-info');
-
-  area.addEventListener('click', () => {
-    // Close others
-    document.querySelectorAll('.case-study.open').forEach(openCard => {
-      if(openCard !== card){
-        openCard.classList.remove('open');
-        openCard.querySelector('.more-info').style.maxHeight = null;
-      }
-    });
-
-    // Toggle current
-    if(card.classList.contains('open')){
-      moreInfo.style.maxHeight = null;
-      card.classList.remove('open');
-    } else {
-      moreInfo.style.maxHeight = moreInfo.scrollHeight + "px";
-      card.classList.add('open');
-      card.scrollIntoView({behavior:'smooth', block:'start'});
-    }
-  });
-});
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobile-nav').classList.toggle('show'));
+  function toggleProject(id) {
+    const card = document.getElementById(id);
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.project-card.open').forEach(c => c.classList.remove('open'));
+    if (!isOpen) { card.classList.add('open'); card.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
+  }
 </script>
-
 </body>
 </html>
